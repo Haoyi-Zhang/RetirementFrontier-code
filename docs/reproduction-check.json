@@ -1,0 +1,135 @@
+{
+  "basis": "Directed repairs to the supplied TOS manuscript and artifact",
+  "full_recheck": {
+    "command": "python scripts/reproduce_portable.py --require-smt",
+    "returncode": 0,
+    "test_methods": 75,
+    "passed": 75,
+    "skipped": 0,
+    "actual_run_record": "results/campaign-run.json"
+  },
+  "retained_measurements": {
+    "origin": "supplied current TOS artifact",
+    "raw_campaign_record": "results/measurement-campaign.json",
+    "unchanged_primary_families": [
+      "census",
+      "heldout",
+      "fallback",
+      "scaling",
+      "public",
+      "pilots (except current unit-test result)"
+    ],
+    "paper_measurements_refreshed": false
+  },
+  "comparison": {
+    "schema": 1,
+    "mode": "full",
+    "scientific_checks": 66,
+    "comparisons": [
+      {
+        "result": "census/graphs.jsonl",
+        "logical_content_equal": true
+      },
+      {
+        "result": "census/summary.json",
+        "logical_content_equal": true
+      },
+      {
+        "result": "heldout/variants.jsonl",
+        "logical_content_equal": true
+      },
+      {
+        "result": "heldout/summary.json",
+        "logical_content_equal": true
+      },
+      {
+        "result": "fallback/truth-table.jsonl",
+        "logical_content_equal": true
+      },
+      {
+        "result": "fallback/fixed-candidate.jsonl",
+        "logical_content_equal": true
+      },
+      {
+        "result": "fallback/summary.json",
+        "logical_content_equal": true
+      },
+      {
+        "result": "scaling/policy-metrics.jsonl",
+        "logical_content_equal": true
+      },
+      {
+        "result": "scaling/recovery.jsonl",
+        "logical_content_equal": true
+      },
+      {
+        "result": "scaling/summary.json",
+        "logical_content_equal": true
+      },
+      {
+        "result": "public/policy-metrics.jsonl",
+        "logical_content_equal": true
+      },
+      {
+        "result": "public/recovery.jsonl",
+        "logical_content_equal": true
+      },
+      {
+        "result": "public/summary.json",
+        "logical_content_equal": true
+      },
+      {
+        "result": "pilots/pilot-results.jsonl",
+        "logical_content_equal": true
+      },
+      {
+        "result": "pilots/pilot-summary.json",
+        "logical_content_equal": true
+      },
+      {
+        "result": "pilots/unit-tests.json",
+        "logical_content_equal": true
+      },
+      {
+        "result": "summary/summary.json",
+        "logical_content_equal": true
+      },
+      {
+        "directory": "inputs",
+        "exact_bytes_equal": true
+      },
+      {
+        "directory": "src",
+        "exact_bytes_equal": true
+      },
+      {
+        "directory": "scripts",
+        "exact_bytes_equal": true
+      },
+      {
+        "directory": "tests",
+        "exact_bytes_equal": true
+      }
+    ],
+    "errors": [],
+    "scope": "Finite result consistency and package hygiene; not theorem verification or editorial acceptance."
+  },
+  "qualification": "Fresh recomputation corroborates retained logical outputs. Old timing samples are not claimed to measure the repaired implementation. No theorem mechanization or external review is claimed.",
+  "core_unit_suite": {
+    "command": "RF_SKIP_SMT=1 python scripts/run_tests.py -v",
+    "methods": 75,
+    "passed": 74,
+    "skipped": 1,
+    "returncode": 0,
+    "scope": "Actual unit run only, not a complete core-only campaign"
+  },
+  "paper": {
+    "pages": 27,
+    "bibliography_entries": 74,
+    "all_figures_and_tables_unchanged": true,
+    "overfull_boxes": 0,
+    "unresolved_references": false,
+    "embedded_font_objects": 18,
+    "all_pages_visually_checked": true
+  }
+}

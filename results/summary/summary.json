@@ -1,0 +1,145 @@
+{
+  "census": {
+    "candidate_cuts": 2129920,
+    "consumer_checks": 3072,
+    "disagreements": 0,
+    "families": {
+      "retired-free": {
+        "bad_cuts": 131328,
+        "candidate_cuts": 2097152,
+        "consumer_checks": 3072,
+        "graphs": 32768,
+        "legal_cuts": 450496,
+        "minimum_witness_checks": 29696,
+        "safe_graphs": 3072
+      },
+      "unretired-reuse": {
+        "bad_cuts": 4464,
+        "candidate_cuts": 32768,
+        "graphs": 1024,
+        "legal_cuts": 10976,
+        "minimum_witness_checks": 1024,
+        "safe_graphs": 0
+      }
+    },
+    "graphs": 33792,
+    "minimum_witness_checks": 30720,
+    "safe_graphs": 3072
+  },
+  "fallback": {
+    "assignments": 2040,
+    "cpu_seconds": 7.448892724,
+    "disagreements": 0,
+    "fixed_candidate_formulas": 92,
+    "fixed_candidate_oracle_checks": 92,
+    "formulas": 255,
+    "max_rss_kib": 97584,
+    "minimum_witness_checks": 92,
+    "stage": "fallback",
+    "wall_seconds": 7.456318176999957
+  },
+  "heldout": {
+    "by_variant": {
+      "edge-free": {
+        "bad_cuts": 18694,
+        "candidate_cuts": 29952,
+        "cases": 64,
+        "legal_cuts": 29952,
+        "safe": 0
+      },
+      "ordered": {
+        "bad_cuts": 0,
+        "candidate_cuts": 29952,
+        "cases": 64,
+        "legal_cuts": 1698,
+        "safe": 64
+      },
+      "unanchored": {
+        "bad_cuts": 1096,
+        "candidate_cuts": 29952,
+        "cases": 64,
+        "legal_cuts": 1698,
+        "safe": 0
+      },
+      "weakened": {
+        "bad_cuts": 1361,
+        "candidate_cuts": 29952,
+        "cases": 64,
+        "legal_cuts": 4696,
+        "safe": 11
+      }
+    },
+    "cases": 256,
+    "consumer_checks": 75,
+    "disagreements": 0,
+    "minimum_witness_checks": 181,
+    "minimum_witness_size_histogram": {
+      "0": 64,
+      "1": 71,
+      "2": 18,
+      "3": 12,
+      "4": 12,
+      "5": 2,
+      "7": 2
+    },
+    "safe": 75,
+    "unsafe": 181
+  },
+  "public": {
+    "input_bytes": 25582,
+    "policy_rows": 9,
+    "unchanged_across_selected_tags": true
+  },
+  "recovery": {
+    "images": 720,
+    "max_ns": 10261317,
+    "median_ns": 2174653,
+    "min_ns": 1522,
+    "public_images": 153,
+    "scaling_images": 567,
+    "unreachable_slots_total": 3765,
+    "validation_checks": {
+      "idempotence": 720,
+      "json_roundtrip": 720,
+      "quiescent_reclamation": 720,
+      "reference_multiplicity": 720
+    }
+  },
+  "scaling": {
+    "instances": 45,
+    "max_events": 5599,
+    "policy_rows": 180,
+    "write_ratios": {
+      "certified-dedup": {
+        "median_chunk_payload_ratio": 0.42236842105263156,
+        "median_encoded_write_ratio": 1.736175537109375
+      },
+      "no-dedup": {
+        "median_chunk_payload_ratio": 1.0,
+        "median_encoded_write_ratio": 2.6953531901041665
+      },
+      "sync-metadata": {
+        "median_chunk_payload_ratio": 0.4713541666666667,
+        "median_encoded_write_ratio": 4.740458170572917
+      },
+      "unchecked-dedup": {
+        "median_chunk_payload_ratio": 0.42236842105263156,
+        "median_encoded_write_ratio": 1.736175537109375
+      }
+    }
+  },
+  "solver": {
+    "campaign_queries": 67,
+    "heldout": 32,
+    "pilot_queries": 2,
+    "public": 3,
+    "queries": 65,
+    "scaling": 30,
+    "unknown": 0
+  },
+  "tests": {
+    "methods": 75,
+    "returncode": 0,
+    "skipped": 0
+  }
+}

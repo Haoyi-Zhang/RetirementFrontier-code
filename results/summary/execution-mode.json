@@ -1,0 +1,7 @@
+{
+  "all_core_stages_requested": true,
+  "mode": "full",
+  "omitted_checks": [],
+  "returncode": 0,
+  "smt_executed": true
+}

@@ -1,0 +1,96 @@
+{
+  "ordered_failures": 0,
+  "rows": [
+    {
+      "child_returncode": null,
+      "crash_after_boundary": 0,
+      "observation": "initial-state",
+      "protocol": "unsafe",
+      "recoverable": true,
+      "recovered": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    {
+      "child_returncode": 86,
+      "crash_after_boundary": 1,
+      "observation": "injected-termination",
+      "protocol": "unsafe",
+      "recoverable": false,
+      "recovered": "stale-generation"
+    },
+    {
+      "child_returncode": 86,
+      "crash_after_boundary": 2,
+      "observation": "injected-termination",
+      "protocol": "unsafe",
+      "recoverable": false,
+      "recovered": "stale-generation"
+    },
+    {
+      "child_returncode": 86,
+      "crash_after_boundary": 3,
+      "observation": "injected-termination",
+      "protocol": "unsafe",
+      "recoverable": true,
+      "recovered": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
+    },
+    {
+      "child_returncode": 0,
+      "crash_after_boundary": 4,
+      "observation": "normal-completion",
+      "protocol": "unsafe",
+      "recoverable": true,
+      "recovered": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
+    },
+    {
+      "child_returncode": null,
+      "crash_after_boundary": 0,
+      "observation": "initial-state",
+      "protocol": "ordered",
+      "recoverable": true,
+      "recovered": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    {
+      "child_returncode": 86,
+      "crash_after_boundary": 1,
+      "observation": "injected-termination",
+      "protocol": "ordered",
+      "recoverable": true,
+      "recovered": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    {
+      "child_returncode": 86,
+      "crash_after_boundary": 2,
+      "observation": "injected-termination",
+      "protocol": "ordered",
+      "recoverable": true,
+      "recovered": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    {
+      "child_returncode": 86,
+      "crash_after_boundary": 3,
+      "observation": "injected-termination",
+      "protocol": "ordered",
+      "recoverable": true,
+      "recovered": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
+    },
+    {
+      "child_returncode": 86,
+      "crash_after_boundary": 4,
+      "observation": "injected-termination",
+      "protocol": "ordered",
+      "recoverable": true,
+      "recovered": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
+    },
+    {
+      "child_returncode": 0,
+      "crash_after_boundary": 5,
+      "observation": "normal-completion",
+      "protocol": "ordered",
+      "recoverable": true,
+      "recovered": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
+    }
+  ],
+  "schema": 1,
+  "scope": "process termination after complete atomic-file replacement helpers; explicit CURRENT selector, not strict greatest-root refinement or power-loss testing",
+  "unsafe_failures": 2
+}

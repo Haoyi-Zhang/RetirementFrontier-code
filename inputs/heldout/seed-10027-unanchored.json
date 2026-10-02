@@ -1,0 +1,154 @@
+{
+  "acknowledgements": [
+    {
+      "anchors": [],
+      "issued": 3,
+      "prefix": 2
+    },
+    {
+      "anchors": [
+        6
+      ],
+      "issued": 7,
+      "prefix": 4
+    }
+  ],
+  "events": [
+    {
+      "data_hex": "61",
+      "deps": [],
+      "digest": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
+      "generation": 1,
+      "id": 0,
+      "kind": "data",
+      "length": 1,
+      "role": "chunk",
+      "slot": 0
+    },
+    {
+      "data_hex": "7b7d",
+      "deps": [],
+      "digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "generation": 1,
+      "id": 1,
+      "kind": "data",
+      "length": 2,
+      "role": "manifest",
+      "slot": 1
+    },
+    {
+      "deps": [
+        1
+      ],
+      "id": 2,
+      "kind": "root",
+      "manifest_ref": {
+        "digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "generation": 1,
+        "length": 2,
+        "slot": 1
+      },
+      "namespace": {},
+      "objects_hex": {},
+      "prefix": 2
+    },
+    {
+      "deps": [
+        0,
+        2
+      ],
+      "generation": 1,
+      "id": 3,
+      "kind": "free",
+      "slot": 0
+    },
+    {
+      "data_hex": "6161",
+      "deps": [
+        3
+      ],
+      "digest": "961b6dd3ede3cb8ecbaacbd68de040cd78eb2ed5889130cceb4c49268ea4d506",
+      "generation": 2,
+      "id": 4,
+      "kind": "data",
+      "length": 2,
+      "role": "chunk",
+      "slot": 0
+    },
+    {
+      "data_hex": "7b2262657461223a5b7b22646967657374223a2239363162366464336564653363623865636261616362643638646530343063643738656232656435383839313330636365623463343932363865613464353036222c2267656e65726174696f6e223a322c226c656e677468223a322c22736c6f74223a307d5d7d",
+      "deps": [],
+      "digest": "fe67a92be7b0dbb4816cefb3937383ca4cdb06144cdf5e9d25e2a8af268dd7ce",
+      "generation": 1,
+      "id": 5,
+      "kind": "data",
+      "length": 123,
+      "role": "manifest",
+      "slot": 2
+    },
+    {
+      "deps": [
+        2,
+        4,
+        5
+      ],
+      "id": 6,
+      "kind": "root",
+      "manifest_ref": {
+        "digest": "fe67a92be7b0dbb4816cefb3937383ca4cdb06144cdf5e9d25e2a8af268dd7ce",
+        "generation": 1,
+        "length": 123,
+        "slot": 2
+      },
+      "namespace": {
+        "beta": [
+          {
+            "digest": "961b6dd3ede3cb8ecbaacbd68de040cd78eb2ed5889130cceb4c49268ea4d506",
+            "generation": 2,
+            "length": 2,
+            "slot": 0
+          }
+        ]
+      },
+      "objects_hex": {
+        "beta": "6161"
+      },
+      "prefix": 4
+    },
+    {
+      "deps": [
+        1,
+        6
+      ],
+      "generation": 1,
+      "id": 7,
+      "kind": "free",
+      "slot": 1
+    }
+  ],
+  "operations": [
+    {
+      "chunks_hex": [
+        "61"
+      ],
+      "name": "alpha",
+      "op": "put"
+    },
+    {
+      "name": "alpha",
+      "op": "delete"
+    },
+    {
+      "name": "alpha",
+      "op": "delete"
+    },
+    {
+      "chunks_hex": [
+        "6161"
+      ],
+      "name": "beta",
+      "op": "put"
+    }
+  ],
+  "schema": "retirement-frontier-trace-v1"
+}

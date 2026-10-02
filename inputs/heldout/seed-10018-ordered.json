@@ -1,0 +1,180 @@
+{
+  "acknowledgements": [
+    {
+      "anchors": [
+        2
+      ],
+      "issued": 3,
+      "prefix": 2
+    },
+    {
+      "anchors": [
+        7
+      ],
+      "issued": 8,
+      "prefix": 4
+    }
+  ],
+  "events": [
+    {
+      "data_hex": "62",
+      "deps": [],
+      "digest": "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d",
+      "generation": 1,
+      "id": 0,
+      "kind": "data",
+      "length": 1,
+      "role": "chunk",
+      "slot": 0
+    },
+    {
+      "data_hex": "7b7d",
+      "deps": [],
+      "digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "generation": 1,
+      "id": 1,
+      "kind": "data",
+      "length": 2,
+      "role": "manifest",
+      "slot": 1
+    },
+    {
+      "deps": [
+        1
+      ],
+      "id": 2,
+      "kind": "root",
+      "manifest_ref": {
+        "digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "generation": 1,
+        "length": 2,
+        "slot": 1
+      },
+      "namespace": {},
+      "objects_hex": {},
+      "prefix": 2
+    },
+    {
+      "deps": [
+        0,
+        2
+      ],
+      "generation": 1,
+      "id": 3,
+      "kind": "free",
+      "slot": 0
+    },
+    {
+      "data_hex": "61",
+      "deps": [
+        3
+      ],
+      "digest": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
+      "generation": 2,
+      "id": 4,
+      "kind": "data",
+      "length": 1,
+      "role": "chunk",
+      "slot": 0
+    },
+    {
+      "data_hex": "62",
+      "deps": [],
+      "digest": "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d",
+      "generation": 1,
+      "id": 5,
+      "kind": "data",
+      "length": 1,
+      "role": "chunk",
+      "slot": 2
+    },
+    {
+      "data_hex": "7b22616c706861223a5b7b22646967657374223a2263613937383131326361316262646361666163323331623339613233646334646137383665666638313437633465373262393830373738356166656534386262222c2267656e65726174696f6e223a322c226c656e677468223a312c22736c6f74223a307d5d2c2262657461223a5b7b22646967657374223a2233653233653831363030333935393461333338393466363536346531623133343862626437613030383864343263346163623733656561656435396330303964222c2267656e65726174696f6e223a312c226c656e677468223a312c22736c6f74223a327d5d7d",
+      "deps": [],
+      "digest": "8535fb7b57aa014740be05bb4f04f34c747e4ba86b073a1540a70e05a2dc442d",
+      "generation": 1,
+      "id": 6,
+      "kind": "data",
+      "length": 246,
+      "role": "manifest",
+      "slot": 3
+    },
+    {
+      "deps": [
+        2,
+        4,
+        5,
+        6
+      ],
+      "id": 7,
+      "kind": "root",
+      "manifest_ref": {
+        "digest": "8535fb7b57aa014740be05bb4f04f34c747e4ba86b073a1540a70e05a2dc442d",
+        "generation": 1,
+        "length": 246,
+        "slot": 3
+      },
+      "namespace": {
+        "alpha": [
+          {
+            "digest": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
+            "generation": 2,
+            "length": 1,
+            "slot": 0
+          }
+        ],
+        "beta": [
+          {
+            "digest": "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d",
+            "generation": 1,
+            "length": 1,
+            "slot": 2
+          }
+        ]
+      },
+      "objects_hex": {
+        "alpha": "61",
+        "beta": "62"
+      },
+      "prefix": 4
+    },
+    {
+      "deps": [
+        1,
+        7
+      ],
+      "generation": 1,
+      "id": 8,
+      "kind": "free",
+      "slot": 1
+    }
+  ],
+  "operations": [
+    {
+      "chunks_hex": [
+        "62"
+      ],
+      "name": "alpha",
+      "op": "put"
+    },
+    {
+      "name": "alpha",
+      "op": "delete"
+    },
+    {
+      "chunks_hex": [
+        "61"
+      ],
+      "name": "alpha",
+      "op": "put"
+    },
+    {
+      "chunks_hex": [
+        "62"
+      ],
+      "name": "beta",
+      "op": "put"
+    }
+  ],
+  "schema": "retirement-frontier-trace-v1"
+}

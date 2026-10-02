@@ -1,0 +1,158 @@
+{
+  "completed": [
+    {
+      "cpu_seconds": 0.0020727040000000363,
+      "max_rss_kib": 97072,
+      "returncode": 0,
+      "skipped": 0,
+      "stage": "tests",
+      "stderr": "test_01_ordered_trace_admits (test_artifact.ArtifactTests.test_01_ordered_trace_admits) ... ok\ntest_02_duplicate_incarnation_rejected (test_artifact.ArtifactTests.test_02_duplicate_incarnation_rejected) ... ok\ntest_03_bad_manifest_binding_rejected (test_artifact.ArtifactTests.test_03_bad_manifest_binding_rejected) ... ok\ntest_04_ghost_prefix_rejected (test_artifact.ArtifactTests.test_04_ghost_prefix_rejected) ... ok\ntest_05_legal_cut_closure (test_artifact.ArtifactTests.test_05_legal_cut_closure) ... ok\ntest_06_strict_full_recovery (test_artifact.ArtifactTests.test_06_strict_full_recovery) ... ok\ntest_07_erased_manifest_fails_strict (test_artifact.ArtifactTests.test_07_erased_manifest_fails_strict) ... ok\ntest_08_fallback_can_use_older_root (test_artifact.ArtifactTests.test_08_fallback_can_use_older_root) ... ok\ntest_09_frontier_safe_matches_oracle (test_artifact.ArtifactTests.test_09_frontier_safe_matches_oracle) ... ok\ntest_10_edge_free_unsafe_matches_oracle (test_artifact.ArtifactTests.test_10_edge_free_unsafe_matches_oracle) ... ok\ntest_11_unanchored_ack_unsafe (test_artifact.ArtifactTests.test_11_unanchored_ack_unsafe) ... ok\ntest_12_pair_agrees_small (test_artifact.ArtifactTests.test_12_pair_agrees_small) ... ok\ntest_13_certificate_consumer_accepts (test_artifact.ArtifactTests.test_13_certificate_consumer_accepts) ... ok\ntest_14_certificate_consumer_rejects_mutation (test_artifact.ArtifactTests.test_14_certificate_consumer_rejects_mutation) ... ok\ntest_15_census_known_safe_graph (test_artifact.ArtifactTests.test_15_census_known_safe_graph) ... ok\ntest_16_unretired_census_never_safe_example (test_artifact.ArtifactTests.test_16_unretired_census_never_safe_example) ... ok\ntest_17_formula_reduction_truth_table (test_artifact.ArtifactTests.test_17_formula_reduction_truth_table) ... ok\ntest_18_fixed_candidate_finds_violation (test_artifact.ArtifactTests.test_18_fixed_candidate_finds_violation) ... ok\ntest_19_fixed_candidate_unknown_budget (test_artifact.ArtifactTests.test_19_fixed_candidate_unknown_budget) ... ok\ntest_20_solver_agrees_when_available (test_artifact.ArtifactTests.test_20_solver_agrees_when_available) ... ok\ntest_21_consumer_rejects_duplicate_slot_generation (test_artifact.ArtifactTests.test_21_consumer_rejects_duplicate_slot_generation) ... ok\ntest_22_consumer_rejects_invalid_role (test_artifact.ArtifactTests.test_22_consumer_rejects_invalid_role) ... ok\ntest_23_manifest_role_binding_rejected_by_both_parsers (test_artifact.ArtifactTests.test_23_manifest_role_binding_rejected_by_both_parsers) ... ok\ntest_24_complete_object_reconstruction_is_checked (test_artifact.ArtifactTests.test_24_complete_object_reconstruction_is_checked) ... ok\ntest_25_certificate_extra_field_rejected (test_artifact.ArtifactTests.test_25_certificate_extra_field_rejected) ... ok\ntest_26_certificate_boolean_identifier_rejected (test_artifact.ArtifactTests.test_26_certificate_boolean_identifier_rejected) ... ok\ntest_27_consumer_accepts_uppercase_operation_hex (test_artifact.ArtifactTests.test_27_consumer_accepts_uppercase_operation_hex) ... ok\ntest_28_model_and_consumer_admission_agree_on_mutations (test_artifact.ArtifactTests.test_28_model_and_consumer_admission_agree_on_mutations) ... ok\ntest_29_malformed_operation_raises_admission_error (test_artifact.ArtifactTests.test_29_malformed_operation_raises_admission_error) ... ok\ntest_30_nonlist_ack_anchors_raise_controlled_errors (test_artifact.ArtifactTests.test_30_nonlist_ack_anchors_raise_controlled_errors) ... ok\ntest_31_oracle_duplicate_cut_preserves_ack_semantics (test_artifact.ArtifactTests.test_31_oracle_duplicate_cut_preserves_ack_semantics) ... ok\ntest_32_recovery_rejects_malformed_image_without_throwing (test_artifact.ArtifactTests.test_32_recovery_rejects_malformed_image_without_throwing) ... ok\ntest_33_recovery_checks_data_role (test_artifact.ArtifactTests.test_33_recovery_checks_data_role) ... ok\ntest_34_duplicate_certificate_row_rejected (test_artifact.ArtifactTests.test_34_duplicate_certificate_row_rejected) ... ok\ntest_35_fixed_candidate_matches_fallback_oracle (test_artifact.ArtifactTests.test_35_fixed_candidate_matches_fallback_oracle) ... ok\ntest_36_noncanonical_numeric_slot_is_rejected_before_certification (test_artifact.ArtifactTests.test_36_noncanonical_numeric_slot_is_rejected_before_certification) ... ok\ntest_37_boolean_and_float_identifiers_are_rejected (test_artifact.ArtifactTests.test_37_boolean_and_float_identifiers_are_rejected) ... ok\ntest_38_recovery_validates_unreachable_slot_records (test_artifact.ArtifactTests.test_38_recovery_validates_unreachable_slot_records) ... ok\ntest_39_recovery_rejects_nonmonotone_root_prefixes (test_artifact.ArtifactTests.test_39_recovery_rejects_nonmonotone_root_prefixes) ... ok\ntest_40_generated_safe_traces_recover_after_certification (test_artifact.ArtifactTests.test_40_generated_safe_traces_recover_after_certification) ... ok\ntest_41_operation_field_and_hex_coercions_are_rejected (test_artifact.ArtifactTests.test_41_operation_field_and_hex_coercions_are_rejected) ... ok\ntest_42_trace_extra_field_is_rejected_by_both_parsers (test_artifact.ArtifactTests.test_42_trace_extra_field_is_rejected_by_both_parsers) ... ok\ntest_43_event_extra_field_is_rejected_by_both_parsers (test_artifact.ArtifactTests.test_43_event_extra_field_is_rejected_by_both_parsers) ... ok\ntest_44_acknowledgement_extra_field_is_rejected_by_both_parsers (test_artifact.ArtifactTests.test_44_acknowledgement_extra_field_is_rejected_by_both_parsers) ... ok\ntest_clean_root_runner_works_without_pythonpath (test_release_hardening.ReleaseHardeningTests.test_clean_root_runner_works_without_pythonpath) ... ok\ntest_last_user_scalar_equals_all_threatened_root_inequalities (test_release_hardening.ReleaseHardeningTests.test_last_user_scalar_equals_all_threatened_root_inequalities) ... ok\ntest_release_normalizer_ignores_only_host_fields (test_release_hardening.ReleaseHardeningTests.test_release_normalizer_ignores_only_host_fields) ... ok\ntest_explicit_skip_prevents_library_loading (test_solver_portability.SolverPortabilityTests.test_explicit_skip_prevents_library_loading) ... ok\ntest_system_library_does_not_require_python_package (test_solver_portability.SolverPortabilityTests.test_system_library_does_not_require_python_package) ... ok\ntest_unavailable_probe_is_false_not_success (test_solver_portability.SolverPortabilityTests.test_unavailable_probe_is_false_not_success) ... ok\ntest_wheel_bundled_library_is_discovered (test_solver_portability.SolverPortabilityTests.test_wheel_bundled_library_is_discovered) ... ok\ntest_duplicate_member_rejected_at_any_depth (test_strict_json.StrictJsonTests.test_duplicate_member_rejected_at_any_depth) ... ok\ntest_nonfinite_extensions_rejected (test_strict_json.StrictJsonTests.test_nonfinite_extensions_rejected) ... ok\ntest_sensitive_modules_do_not_call_raw_json_load (test_strict_json.StrictJsonTests.test_sensitive_modules_do_not_call_raw_json_load) ... ok\ntest_valid_json_preserves_types (test_strict_json.StrictJsonTests.test_valid_json_preserves_types) ... ok\n\n----------------------------------------------------------------------\nRan 55 tests in 1.218s\n\nOK\n",
+      "stdout": "",
+      "test_methods": 55,
+      "wall_seconds": 2.0842583439998634
+    },
+    {
+      "cases": 2,
+      "cpu_seconds": 0.13457317999999985,
+      "max_rss_kib": 117036,
+      "solver_queries": 2,
+      "stage": "pilots",
+      "wall_seconds": 0.13648378800007777
+    },
+    {
+      "candidate_cuts": 2129920,
+      "consumer_checks": 3072,
+      "cpu_seconds": 27.078560145,
+      "disagreements": 0,
+      "families": {
+        "retired-free": {
+          "bad_cuts": 131328,
+          "candidate_cuts": 2097152,
+          "consumer_checks": 3072,
+          "graphs": 32768,
+          "legal_cuts": 450496,
+          "minimum_witness_checks": 29696,
+          "safe_graphs": 3072
+        },
+        "unretired-reuse": {
+          "bad_cuts": 4464,
+          "candidate_cuts": 32768,
+          "graphs": 1024,
+          "legal_cuts": 10976,
+          "minimum_witness_checks": 1024,
+          "safe_graphs": 0
+        }
+      },
+      "graphs": 33792,
+      "max_rss_kib": 116268,
+      "minimum_witness_checks": 30720,
+      "safe_graphs": 3072,
+      "stage": "census",
+      "wall_seconds": 27.128748235999865
+    },
+    {
+      "by_variant": {
+        "edge-free": {
+          "bad_cuts": 18694,
+          "candidate_cuts": 29952,
+          "cases": 64,
+          "legal_cuts": 29952,
+          "safe": 0
+        },
+        "ordered": {
+          "bad_cuts": 0,
+          "candidate_cuts": 29952,
+          "cases": 64,
+          "legal_cuts": 1698,
+          "safe": 64
+        },
+        "unanchored": {
+          "bad_cuts": 1096,
+          "candidate_cuts": 29952,
+          "cases": 64,
+          "legal_cuts": 1698,
+          "safe": 0
+        },
+        "weakened": {
+          "bad_cuts": 1361,
+          "candidate_cuts": 29952,
+          "cases": 64,
+          "legal_cuts": 4696,
+          "safe": 11
+        }
+      },
+      "cases": 256,
+      "consumer_checks": 75,
+      "cpu_seconds": 2.5201078299999997,
+      "disagreements": 0,
+      "max_rss_kib": 117000,
+      "minimum_witness_checks": 181,
+      "minimum_witness_size_histogram": {
+        "0": 64,
+        "1": 71,
+        "2": 18,
+        "3": 12,
+        "4": 12,
+        "5": 2,
+        "7": 2
+      },
+      "safe": 75,
+      "solver_queries": 32,
+      "stage": "heldout",
+      "unsafe": 181,
+      "wall_seconds": 2.5473265539999375
+    },
+    {
+      "assignments": 2040,
+      "cpu_seconds": 7.448892724,
+      "disagreements": 0,
+      "fixed_candidate_formulas": 92,
+      "fixed_candidate_oracle_checks": 92,
+      "formulas": 255,
+      "max_rss_kib": 97584,
+      "minimum_witness_checks": 92,
+      "stage": "fallback",
+      "wall_seconds": 7.456318176999957
+    },
+    {
+      "cpu_seconds": 61.17919135299999,
+      "instances": 45,
+      "max_events": 5599,
+      "max_rss_kib": 217200,
+      "policy_rows": 180,
+      "recovery_images": 567,
+      "recovery_validation_checks": {
+        "idempotence": 567,
+        "json_roundtrip": 567,
+        "quiescent_reclamation": 567,
+        "reference_multiplicity": 567
+      },
+      "solver_queries": 30,
+      "stage": "scaling",
+      "wall_seconds": 61.26573671699998
+    },
+    {
+      "chunk_sizes": 3,
+      "cpu_seconds": 3.8676574719999994,
+      "input_bytes": 25582,
+      "max_rss_kib": 121132,
+      "policy_rows": 9,
+      "recovery_images": 153,
+      "recovery_validation_checks": {
+        "idempotence": 153,
+        "json_roundtrip": 153,
+        "quiescent_reclamation": 153,
+        "reference_multiplicity": 153
+      },
+      "solver_queries": 3,
+      "stage": "public",
+      "unchanged_across_selected_tags": true,
+      "wall_seconds": 3.879552180000246
+    }
+  ],
+  "cpu_seconds": 102.23105540799999,
+  "execution_mode": "fresh-process-per-stage",
+  "max_rss_kib": 217200,
+  "requested_stage": "all",
+  "wall_seconds": 109.32459538900002
+}

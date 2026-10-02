@@ -1,0 +1,11 @@
+# Licensing status
+
+The final copyright-holder list and publication license for the original project
+code have not been supplied or approved by all contributors. This package does
+not invent a grant by unidentified authors. Before public distribution, the
+actual rights holders must select and approve the code and data licenses.
+
+The exact SQLite input files retain their upstream public-domain notices.
+The optional Z3 library is not redistributed; its upstream MIT/Expat notice is
+retained under licenses/. Publisher template assets, in the separate paper
+directory of the full project, retain their own upstream notices.

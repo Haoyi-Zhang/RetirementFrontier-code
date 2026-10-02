@@ -1,0 +1,169 @@
+{
+  "acknowledgements": [
+    {
+      "anchors": [
+        2
+      ],
+      "issued": 3,
+      "prefix": 2
+    },
+    {
+      "anchors": [
+        5
+      ],
+      "issued": 6,
+      "prefix": 4
+    }
+  ],
+  "events": [
+    {
+      "data_hex": "61",
+      "deps": [],
+      "digest": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
+      "generation": 1,
+      "id": 0,
+      "kind": "data",
+      "length": 1,
+      "role": "chunk",
+      "slot": 0
+    },
+    {
+      "data_hex": "7b2262657461223a5b7b22646967657374223a2263613937383131326361316262646361666163323331623339613233646334646137383665666638313437633465373262393830373738356166656534386262222c2267656e65726174696f6e223a312c226c656e677468223a312c22736c6f74223a307d5d7d",
+      "deps": [],
+      "digest": "5b794f9dc642ad0dc32607ab602ed80380810c080a607102f17c98e9f047d0e7",
+      "generation": 1,
+      "id": 1,
+      "kind": "data",
+      "length": 123,
+      "role": "manifest",
+      "slot": 1
+    },
+    {
+      "deps": [
+        0,
+        1
+      ],
+      "id": 2,
+      "kind": "root",
+      "manifest_ref": {
+        "digest": "5b794f9dc642ad0dc32607ab602ed80380810c080a607102f17c98e9f047d0e7",
+        "generation": 1,
+        "length": 123,
+        "slot": 1
+      },
+      "namespace": {
+        "beta": [
+          {
+            "digest": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
+            "generation": 1,
+            "length": 1,
+            "slot": 0
+          }
+        ]
+      },
+      "objects_hex": {
+        "beta": "61"
+      },
+      "prefix": 2
+    },
+    {
+      "data_hex": "62",
+      "deps": [],
+      "digest": "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d",
+      "generation": 1,
+      "id": 3,
+      "kind": "data",
+      "length": 1,
+      "role": "chunk",
+      "slot": 2
+    },
+    {
+      "data_hex": "7b22616c706861223a5b7b22646967657374223a2233653233653831363030333935393461333338393466363536346531623133343862626437613030383864343263346163623733656561656435396330303964222c2267656e65726174696f6e223a312c226c656e677468223a312c22736c6f74223a327d5d2c2262657461223a5b7b22646967657374223a2263613937383131326361316262646361666163323331623339613233646334646137383665666638313437633465373262393830373738356166656534386262222c2267656e65726174696f6e223a312c226c656e677468223a312c22736c6f74223a307d5d7d",
+      "deps": [],
+      "digest": "a7f55b3c037d2f2836aab0f52b851f2d6b90453b03beb6c0da0d0a8671b0e7cb",
+      "generation": 1,
+      "id": 4,
+      "kind": "data",
+      "length": 246,
+      "role": "manifest",
+      "slot": 3
+    },
+    {
+      "deps": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "id": 5,
+      "kind": "root",
+      "manifest_ref": {
+        "digest": "a7f55b3c037d2f2836aab0f52b851f2d6b90453b03beb6c0da0d0a8671b0e7cb",
+        "generation": 1,
+        "length": 246,
+        "slot": 3
+      },
+      "namespace": {
+        "alpha": [
+          {
+            "digest": "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d",
+            "generation": 1,
+            "length": 1,
+            "slot": 2
+          }
+        ],
+        "beta": [
+          {
+            "digest": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
+            "generation": 1,
+            "length": 1,
+            "slot": 0
+          }
+        ]
+      },
+      "objects_hex": {
+        "alpha": "62",
+        "beta": "61"
+      },
+      "prefix": 4
+    },
+    {
+      "deps": [
+        1,
+        5
+      ],
+      "generation": 1,
+      "id": 6,
+      "kind": "free",
+      "slot": 1
+    }
+  ],
+  "operations": [
+    {
+      "chunks_hex": [
+        "61"
+      ],
+      "name": "beta",
+      "op": "put"
+    },
+    {
+      "name": "alpha",
+      "op": "delete"
+    },
+    {
+      "chunks_hex": [
+        "61"
+      ],
+      "name": "alpha",
+      "op": "put"
+    },
+    {
+      "chunks_hex": [
+        "62"
+      ],
+      "name": "alpha",
+      "op": "put"
+    }
+  ],
+  "schema": "retirement-frontier-trace-v1"
+}

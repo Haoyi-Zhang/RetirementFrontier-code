@@ -1,0 +1,18 @@
+{
+  "chunk_sizes": 3,
+  "cpu_seconds": 3.8676574719999994,
+  "input_bytes": 25582,
+  "max_rss_kib": 121132,
+  "policy_rows": 9,
+  "recovery_images": 153,
+  "recovery_validation_checks": {
+    "idempotence": 153,
+    "json_roundtrip": 153,
+    "quiescent_reclamation": 153,
+    "reference_multiplicity": 153
+  },
+  "solver_queries": 3,
+  "stage": "public",
+  "unchanged_across_selected_tags": true,
+  "wall_seconds": 3.879552180000246
+}

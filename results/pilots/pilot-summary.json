@@ -1,0 +1,8 @@
+{
+  "cases": 2,
+  "cpu_seconds": 0.13457317999999985,
+  "max_rss_kib": 117036,
+  "solver_queries": 2,
+  "stage": "pilots",
+  "wall_seconds": 0.13648378800007777
+}

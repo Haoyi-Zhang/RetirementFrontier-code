@@ -1,0 +1,204 @@
+{
+  "acknowledgements": [
+    {
+      "anchors": [
+        3
+      ],
+      "issued": 4,
+      "prefix": 2
+    },
+    {
+      "anchors": [
+        7
+      ],
+      "issued": 8,
+      "prefix": 4
+    }
+  ],
+  "events": [
+    {
+      "data_hex": "61",
+      "deps": [],
+      "digest": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
+      "generation": 1,
+      "id": 0,
+      "kind": "data",
+      "length": 1,
+      "role": "chunk",
+      "slot": 0
+    },
+    {
+      "data_hex": "62",
+      "deps": [],
+      "digest": "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d",
+      "generation": 1,
+      "id": 1,
+      "kind": "data",
+      "length": 1,
+      "role": "chunk",
+      "slot": 1
+    },
+    {
+      "data_hex": "7b2262657461223a5b7b22646967657374223a2233653233653831363030333935393461333338393466363536346531623133343862626437613030383864343263346163623733656561656435396330303964222c2267656e65726174696f6e223a312c226c656e677468223a312c22736c6f74223a317d5d7d",
+      "deps": [],
+      "digest": "5f11cdd6c26164f026548094bd5b60371c8d6964265b418f27e18bd0afdb1022",
+      "generation": 1,
+      "id": 2,
+      "kind": "data",
+      "length": 123,
+      "role": "manifest",
+      "slot": 2
+    },
+    {
+      "deps": [
+        1,
+        2
+      ],
+      "id": 3,
+      "kind": "root",
+      "manifest_ref": {
+        "digest": "5f11cdd6c26164f026548094bd5b60371c8d6964265b418f27e18bd0afdb1022",
+        "generation": 1,
+        "length": 123,
+        "slot": 2
+      },
+      "namespace": {
+        "beta": [
+          {
+            "digest": "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d",
+            "generation": 1,
+            "length": 1,
+            "slot": 1
+          }
+        ]
+      },
+      "objects_hex": {
+        "beta": "62"
+      },
+      "prefix": 2
+    },
+    {
+      "deps": [
+        0,
+        3
+      ],
+      "generation": 1,
+      "id": 4,
+      "kind": "free",
+      "slot": 0
+    },
+    {
+      "data_hex": "61",
+      "deps": [
+        4
+      ],
+      "digest": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
+      "generation": 2,
+      "id": 5,
+      "kind": "data",
+      "length": 1,
+      "role": "chunk",
+      "slot": 0
+    },
+    {
+      "data_hex": "7b22616c706861223a5b7b22646967657374223a2263613937383131326361316262646361666163323331623339613233646334646137383665666638313437633465373262393830373738356166656534386262222c2267656e65726174696f6e223a322c226c656e677468223a312c22736c6f74223a307d5d2c2262657461223a5b7b22646967657374223a2263613937383131326361316262646361666163323331623339613233646334646137383665666638313437633465373262393830373738356166656534386262222c2267656e65726174696f6e223a322c226c656e677468223a312c22736c6f74223a307d5d7d",
+      "deps": [],
+      "digest": "d6df86fcda7bf8b31a2dff2fb5d07e2410df6b214a50b3bdd6c3fab674ad7a5c",
+      "generation": 1,
+      "id": 6,
+      "kind": "data",
+      "length": 246,
+      "role": "manifest",
+      "slot": 3
+    },
+    {
+      "deps": [
+        3,
+        5,
+        6
+      ],
+      "id": 7,
+      "kind": "root",
+      "manifest_ref": {
+        "digest": "d6df86fcda7bf8b31a2dff2fb5d07e2410df6b214a50b3bdd6c3fab674ad7a5c",
+        "generation": 1,
+        "length": 246,
+        "slot": 3
+      },
+      "namespace": {
+        "alpha": [
+          {
+            "digest": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
+            "generation": 2,
+            "length": 1,
+            "slot": 0
+          }
+        ],
+        "beta": [
+          {
+            "digest": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
+            "generation": 2,
+            "length": 1,
+            "slot": 0
+          }
+        ]
+      },
+      "objects_hex": {
+        "alpha": "61",
+        "beta": "61"
+      },
+      "prefix": 4
+    },
+    {
+      "deps": [
+        1,
+        7
+      ],
+      "generation": 1,
+      "id": 8,
+      "kind": "free",
+      "slot": 1
+    },
+    {
+      "deps": [
+        2,
+        7
+      ],
+      "generation": 1,
+      "id": 9,
+      "kind": "free",
+      "slot": 2
+    }
+  ],
+  "operations": [
+    {
+      "chunks_hex": [
+        "61"
+      ],
+      "name": "beta",
+      "op": "put"
+    },
+    {
+      "chunks_hex": [
+        "62"
+      ],
+      "name": "beta",
+      "op": "put"
+    },
+    {
+      "chunks_hex": [
+        "61"
+      ],
+      "name": "alpha",
+      "op": "put"
+    },
+    {
+      "chunks_hex": [
+        "61"
+      ],
+      "name": "beta",
+      "op": "put"
+    }
+  ],
+  "schema": "retirement-frontier-trace-v1"
+}

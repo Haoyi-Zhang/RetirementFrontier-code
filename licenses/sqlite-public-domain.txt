@@ -1,0 +1,11 @@
+SQLite source inputs are in the public domain.
+
+The exact six files under inputs/sqlite/ preserve SQLite's embedded notice:
+"The author disclaims copyright to this source code."
+
+Upstream source: https://github.com/sqlite/sqlite
+Selected tags: version-3.46.0 and version-3.47.0
+Selected paths: src/hash.h, src/mutex.h, src/pcache.h
+The GitHub repository is an official mirror; SQLite's primary source system is
+Fossil.  The files are used only as inert public byte strings and are not
+compiled or executed by this artifact.

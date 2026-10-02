@@ -1,0 +1,17 @@
+{
+  "cpu_seconds": 61.17919135299999,
+  "instances": 45,
+  "max_events": 5599,
+  "max_rss_kib": 217200,
+  "policy_rows": 180,
+  "recovery_images": 567,
+  "recovery_validation_checks": {
+    "idempotence": 567,
+    "json_roundtrip": 567,
+    "quiescent_reclamation": 567,
+    "reference_multiplicity": 567
+  },
+  "solver_queries": 30,
+  "stage": "scaling",
+  "wall_seconds": 61.26573671699998
+}

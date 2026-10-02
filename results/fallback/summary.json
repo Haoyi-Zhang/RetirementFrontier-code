@@ -1,0 +1,12 @@
+{
+  "assignments": 2040,
+  "cpu_seconds": 7.448892724,
+  "disagreements": 0,
+  "fixed_candidate_formulas": 92,
+  "fixed_candidate_oracle_checks": 92,
+  "formulas": 255,
+  "max_rss_kib": 97584,
+  "minimum_witness_checks": 92,
+  "stage": "fallback",
+  "wall_seconds": 7.456318176999957
+}

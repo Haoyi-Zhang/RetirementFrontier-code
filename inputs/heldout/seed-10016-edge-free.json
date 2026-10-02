@@ -1,0 +1,165 @@
+{
+  "acknowledgements": [
+    {
+      "anchors": [
+        3
+      ],
+      "issued": 4,
+      "prefix": 2
+    },
+    {
+      "anchors": [
+        5
+      ],
+      "issued": 6,
+      "prefix": 4
+    }
+  ],
+  "events": [
+    {
+      "data_hex": "61",
+      "deps": [],
+      "digest": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
+      "generation": 1,
+      "id": 0,
+      "kind": "data",
+      "length": 1,
+      "role": "chunk",
+      "slot": 0
+    },
+    {
+      "data_hex": "6161",
+      "deps": [],
+      "digest": "961b6dd3ede3cb8ecbaacbd68de040cd78eb2ed5889130cceb4c49268ea4d506",
+      "generation": 1,
+      "id": 1,
+      "kind": "data",
+      "length": 2,
+      "role": "chunk",
+      "slot": 1
+    },
+    {
+      "data_hex": "7b22616c706861223a5b7b22646967657374223a2239363162366464336564653363623865636261616362643638646530343063643738656232656435383839313330636365623463343932363865613464353036222c2267656e65726174696f6e223a312c226c656e677468223a322c22736c6f74223a317d5d2c2262657461223a5b7b22646967657374223a2263613937383131326361316262646361666163323331623339613233646334646137383665666638313437633465373262393830373738356166656534386262222c2267656e65726174696f6e223a312c226c656e677468223a312c22736c6f74223a307d5d7d",
+      "deps": [],
+      "digest": "391ec001c2a98299ed7f22d2e6f8aeda44bb97a842781f4e383e7bb211354bb2",
+      "generation": 1,
+      "id": 2,
+      "kind": "data",
+      "length": 246,
+      "role": "manifest",
+      "slot": 2
+    },
+    {
+      "deps": [],
+      "id": 3,
+      "kind": "root",
+      "manifest_ref": {
+        "digest": "391ec001c2a98299ed7f22d2e6f8aeda44bb97a842781f4e383e7bb211354bb2",
+        "generation": 1,
+        "length": 246,
+        "slot": 2
+      },
+      "namespace": {
+        "alpha": [
+          {
+            "digest": "961b6dd3ede3cb8ecbaacbd68de040cd78eb2ed5889130cceb4c49268ea4d506",
+            "generation": 1,
+            "length": 2,
+            "slot": 1
+          }
+        ],
+        "beta": [
+          {
+            "digest": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
+            "generation": 1,
+            "length": 1,
+            "slot": 0
+          }
+        ]
+      },
+      "objects_hex": {
+        "alpha": "6161",
+        "beta": "61"
+      },
+      "prefix": 2
+    },
+    {
+      "data_hex": "7b2262657461223a5b7b22646967657374223a2263613937383131326361316262646361666163323331623339613233646334646137383665666638313437633465373262393830373738356166656534386262222c2267656e65726174696f6e223a312c226c656e677468223a312c22736c6f74223a307d5d7d",
+      "deps": [],
+      "digest": "5b794f9dc642ad0dc32607ab602ed80380810c080a607102f17c98e9f047d0e7",
+      "generation": 1,
+      "id": 4,
+      "kind": "data",
+      "length": 123,
+      "role": "manifest",
+      "slot": 3
+    },
+    {
+      "deps": [],
+      "id": 5,
+      "kind": "root",
+      "manifest_ref": {
+        "digest": "5b794f9dc642ad0dc32607ab602ed80380810c080a607102f17c98e9f047d0e7",
+        "generation": 1,
+        "length": 123,
+        "slot": 3
+      },
+      "namespace": {
+        "beta": [
+          {
+            "digest": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
+            "generation": 1,
+            "length": 1,
+            "slot": 0
+          }
+        ]
+      },
+      "objects_hex": {
+        "beta": "61"
+      },
+      "prefix": 4
+    },
+    {
+      "deps": [],
+      "generation": 1,
+      "id": 6,
+      "kind": "free",
+      "slot": 1
+    },
+    {
+      "deps": [],
+      "generation": 1,
+      "id": 7,
+      "kind": "free",
+      "slot": 2
+    }
+  ],
+  "operations": [
+    {
+      "chunks_hex": [
+        "61"
+      ],
+      "name": "beta",
+      "op": "put"
+    },
+    {
+      "chunks_hex": [
+        "6161"
+      ],
+      "name": "alpha",
+      "op": "put"
+    },
+    {
+      "chunks_hex": [
+        "61"
+      ],
+      "name": "beta",
+      "op": "put"
+    },
+    {
+      "name": "alpha",
+      "op": "delete"
+    }
+  ],
+  "schema": "retirement-frontier-trace-v1"
+}

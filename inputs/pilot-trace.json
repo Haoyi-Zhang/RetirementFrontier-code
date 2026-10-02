@@ -1,0 +1,224 @@
+{
+  "acknowledgements": [
+    {
+      "anchors": [
+        3
+      ],
+      "issued": 4,
+      "prefix": 2
+    },
+    {
+      "anchors": [
+        7
+      ],
+      "issued": 8,
+      "prefix": 4
+    }
+  ],
+  "events": [
+    {
+      "data_hex": "41",
+      "deps": [],
+      "digest": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+      "generation": 1,
+      "id": 0,
+      "kind": "data",
+      "length": 1,
+      "role": "chunk",
+      "slot": 0
+    },
+    {
+      "data_hex": "42",
+      "deps": [],
+      "digest": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c",
+      "generation": 1,
+      "id": 1,
+      "kind": "data",
+      "length": 1,
+      "role": "chunk",
+      "slot": 1
+    },
+    {
+      "data_hex": "7b2261223a5b7b22646967657374223a2235353961656164303832363464353739356433393039373138636464303561626434393537326538346665353535393065656633316138386130386664666664222c2267656e65726174696f6e223a312c226c656e677468223a312c22736c6f74223a307d5d2c2262223a5b7b22646967657374223a2264663765373065353032313534346634383334626265653634613965333738396665626334626538313437306466363239636164366464623033333230613563222c2267656e65726174696f6e223a312c226c656e677468223a312c22736c6f74223a317d5d7d",
+      "deps": [],
+      "digest": "997b64779d2a5376597049f8882c9fbd5a9f0c61bc41d92a2cd8bb535d1e0a17",
+      "generation": 1,
+      "id": 2,
+      "kind": "data",
+      "length": 239,
+      "role": "manifest",
+      "slot": 2
+    },
+    {
+      "deps": [
+        0,
+        1,
+        2
+      ],
+      "id": 3,
+      "kind": "root",
+      "manifest_ref": {
+        "digest": "997b64779d2a5376597049f8882c9fbd5a9f0c61bc41d92a2cd8bb535d1e0a17",
+        "generation": 1,
+        "length": 239,
+        "slot": 2
+      },
+      "namespace": {
+        "a": [
+          {
+            "digest": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+            "generation": 1,
+            "length": 1,
+            "slot": 0
+          }
+        ],
+        "b": [
+          {
+            "digest": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c",
+            "generation": 1,
+            "length": 1,
+            "slot": 1
+          }
+        ]
+      },
+      "objects_hex": {
+        "a": "41",
+        "b": "42"
+      },
+      "prefix": 2
+    },
+    {
+      "data_hex": "43",
+      "deps": [],
+      "digest": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d",
+      "generation": 1,
+      "id": 4,
+      "kind": "data",
+      "length": 1,
+      "role": "chunk",
+      "slot": 3
+    },
+    {
+      "data_hex": "44",
+      "deps": [],
+      "digest": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43",
+      "generation": 1,
+      "id": 5,
+      "kind": "data",
+      "length": 1,
+      "role": "chunk",
+      "slot": 4
+    },
+    {
+      "data_hex": "7b2261223a5b7b22646967657374223a2236623233633064356633356431623131663962363833663062306136313733353564656231313237376439316165303931643339396336353562383739343064222c2267656e65726174696f6e223a312c226c656e677468223a312c22736c6f74223a337d5d2c2262223a5b7b22646967657374223a2233663339643563333438653562373964303665383432633131346536636335373135383362626634346534623065626664613161303165633035373435643433222c2267656e65726174696f6e223a312c226c656e677468223a312c22736c6f74223a347d5d7d",
+      "deps": [],
+      "digest": "0901d99b43a9210a256cacc9debdae1b9091387fb945b3e5d8898e33fa97e5b2",
+      "generation": 1,
+      "id": 6,
+      "kind": "data",
+      "length": 239,
+      "role": "manifest",
+      "slot": 5
+    },
+    {
+      "deps": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "id": 7,
+      "kind": "root",
+      "manifest_ref": {
+        "digest": "0901d99b43a9210a256cacc9debdae1b9091387fb945b3e5d8898e33fa97e5b2",
+        "generation": 1,
+        "length": 239,
+        "slot": 5
+      },
+      "namespace": {
+        "a": [
+          {
+            "digest": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d",
+            "generation": 1,
+            "length": 1,
+            "slot": 3
+          }
+        ],
+        "b": [
+          {
+            "digest": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43",
+            "generation": 1,
+            "length": 1,
+            "slot": 4
+          }
+        ]
+      },
+      "objects_hex": {
+        "a": "43",
+        "b": "44"
+      },
+      "prefix": 4
+    },
+    {
+      "deps": [
+        0,
+        7
+      ],
+      "generation": 1,
+      "id": 8,
+      "kind": "free",
+      "slot": 0
+    },
+    {
+      "deps": [
+        1,
+        7
+      ],
+      "generation": 1,
+      "id": 9,
+      "kind": "free",
+      "slot": 1
+    },
+    {
+      "deps": [
+        2,
+        7
+      ],
+      "generation": 1,
+      "id": 10,
+      "kind": "free",
+      "slot": 2
+    }
+  ],
+  "operations": [
+    {
+      "chunks_hex": [
+        "41"
+      ],
+      "name": "a",
+      "op": "put"
+    },
+    {
+      "chunks_hex": [
+        "42"
+      ],
+      "name": "b",
+      "op": "put"
+    },
+    {
+      "chunks_hex": [
+        "43"
+      ],
+      "name": "a",
+      "op": "put"
+    },
+    {
+      "chunks_hex": [
+        "44"
+      ],
+      "name": "b",
+      "op": "put"
+    }
+  ],
+  "schema": "retirement-frontier-trace-v1"
+}

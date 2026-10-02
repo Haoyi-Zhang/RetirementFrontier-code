@@ -1,0 +1,2097 @@
+{
+  "basis": "Current code; actual directed execution. Before-edit observations are retained separately.",
+  "cases": {
+    "late-manifest-wrong-role": {
+      "trace": {
+        "schema": "retirement-frontier-trace-v1",
+        "operations": [
+          {
+            "op": "delete",
+            "name": "x"
+          }
+        ],
+        "events": [
+          {
+            "id": 0,
+            "kind": "root",
+            "prefix": 1,
+            "namespace": {},
+            "manifest_ref": {
+              "slot": 0,
+              "generation": 1,
+              "digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "length": 2
+            },
+            "objects_hex": {},
+            "deps": []
+          },
+          {
+            "id": 1,
+            "kind": "data",
+            "slot": 0,
+            "generation": 1,
+            "digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "length": 2,
+            "data_hex": "7b7d",
+            "role": "chunk",
+            "deps": []
+          }
+        ],
+        "acknowledgements": [
+          {
+            "issued": 2,
+            "prefix": 1,
+            "anchors": [
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "producer": {
+        "admitted": false,
+        "exception": "AdmissionError",
+        "message": "event 0: manifest reference names a non-manifest allocation"
+      },
+      "consumer": {
+        "admitted": false,
+        "exception": "VerificationError",
+        "message": "event 0: manifest reference names a non-manifest allocation"
+      }
+    },
+    "late-manifest-valid": {
+      "trace": {
+        "schema": "retirement-frontier-trace-v1",
+        "operations": [
+          {
+            "op": "delete",
+            "name": "x"
+          }
+        ],
+        "events": [
+          {
+            "id": 0,
+            "kind": "root",
+            "prefix": 1,
+            "namespace": {},
+            "manifest_ref": {
+              "slot": 0,
+              "generation": 1,
+              "digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "length": 2
+            },
+            "objects_hex": {},
+            "deps": []
+          },
+          {
+            "id": 1,
+            "kind": "data",
+            "slot": 0,
+            "generation": 1,
+            "digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "length": 2,
+            "data_hex": "7b7d",
+            "role": "manifest",
+            "deps": []
+          }
+        ],
+        "acknowledgements": [
+          {
+            "issued": 2,
+            "prefix": 1,
+            "anchors": [
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "producer": {
+        "admitted": true
+      },
+      "consumer": {
+        "admitted": true
+      },
+      "strict": {
+        "safe": false,
+        "publication_failures": [
+          {
+            "root": 0,
+            "ref_index": 0,
+            "allocation": 1
+          }
+        ],
+        "retirement_failures": [],
+        "acknowledgement_failures": [],
+        "frontier_obligations": 0,
+        "certificate": null,
+        "minimum_bad_cut": [
+          0
+        ],
+        "producer_cpu_seconds": 1.249799999991641e-05,
+        "certificate_bytes": 0
+      },
+      "fallback": {
+        "status": "safe",
+        "safe": true,
+        "minimum_bad_cut": null,
+        "choices_explored": 2,
+        "cpu_seconds": 1.4941999999962263e-05
+      },
+      "oracle_fallback": {
+        "safe": true,
+        "events": 2,
+        "candidate_cuts": 4,
+        "legal_cuts": 4,
+        "bad_cuts": 0,
+        "minimum_bad_cut": null,
+        "oracle_cpu_seconds": 0.0001603169999999654
+      },
+      "cuts": [
+        {
+          "cut": [],
+          "verdict": {
+            "safe": true,
+            "outcome": {
+              "ok": true,
+              "prefix": 0,
+              "root_event": null,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [],
+              "unreachable_slots": [],
+              "root_history": 0
+            }
+          }
+        },
+        {
+          "cut": [
+            0
+          ],
+          "verdict": {
+            "safe": true,
+            "outcome": {
+              "ok": true,
+              "prefix": 0,
+              "root_event": null,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [],
+              "unreachable_slots": [],
+              "root_history": 1,
+              "skipped": [
+                {
+                  "root_event": 0,
+                  "reason": "slot 0 is absent or free"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "cut": [
+            1
+          ],
+          "verdict": {
+            "safe": true,
+            "outcome": {
+              "ok": true,
+              "prefix": 0,
+              "root_event": null,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [],
+              "unreachable_slots": [
+                0
+              ],
+              "root_history": 0
+            }
+          }
+        },
+        {
+          "cut": [
+            0,
+            1
+          ],
+          "verdict": {
+            "safe": true,
+            "outcome": {
+              "ok": true,
+              "prefix": 1,
+              "root_event": 0,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [
+                0
+              ],
+              "unreachable_slots": [],
+              "root_history": 1
+            }
+          }
+        }
+      ]
+    },
+    "late-chunk-wrong-role": {
+      "trace": {
+        "schema": "retirement-frontier-trace-v1",
+        "operations": [
+          {
+            "op": "put",
+            "name": "x",
+            "chunks_hex": [
+              "61"
+            ]
+          }
+        ],
+        "events": [
+          {
+            "id": 0,
+            "kind": "data",
+            "slot": 0,
+            "generation": 1,
+            "digest": "756f7e588a5c3d285583a569c42098c85a0c3f25374bd0f810fb7d2e4a85b201",
+            "length": 120,
+            "data_hex": "7b2278223a5b7b22646967657374223a2263613937383131326361316262646361666163323331623339613233646334646137383665666638313437633465373262393830373738356166656534386262222c2267656e65726174696f6e223a312c226c656e677468223a312c22736c6f74223a317d5d7d",
+            "role": "manifest",
+            "deps": []
+          },
+          {
+            "id": 1,
+            "kind": "root",
+            "prefix": 1,
+            "namespace": {
+              "x": [
+                {
+                  "slot": 1,
+                  "generation": 1,
+                  "digest": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
+                  "length": 1
+                }
+              ]
+            },
+            "manifest_ref": {
+              "slot": 0,
+              "generation": 1,
+              "digest": "756f7e588a5c3d285583a569c42098c85a0c3f25374bd0f810fb7d2e4a85b201",
+              "length": 120
+            },
+            "objects_hex": {
+              "x": "61"
+            },
+            "deps": [
+              0
+            ]
+          },
+          {
+            "id": 2,
+            "kind": "data",
+            "slot": 1,
+            "generation": 1,
+            "digest": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
+            "length": 1,
+            "data_hex": "61",
+            "role": "manifest",
+            "deps": []
+          }
+        ],
+        "acknowledgements": [
+          {
+            "issued": 3,
+            "prefix": 1,
+            "anchors": [
+              0,
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      "producer": {
+        "admitted": false,
+        "exception": "AdmissionError",
+        "message": "event 1: object reference names a non-chunk allocation"
+      },
+      "consumer": {
+        "admitted": false,
+        "exception": "VerificationError",
+        "message": "event 1: object reference names a non-chunk allocation"
+      }
+    },
+    "late-chunk-wrong-object": {
+      "trace": {
+        "schema": "retirement-frontier-trace-v1",
+        "operations": [
+          {
+            "op": "put",
+            "name": "x",
+            "chunks_hex": [
+              "61"
+            ]
+          }
+        ],
+        "events": [
+          {
+            "id": 0,
+            "kind": "data",
+            "slot": 0,
+            "generation": 1,
+            "digest": "898267270eae5afbe2d983e49cda965f62e02c1fade8b0cbdc89f236170eb7af",
+            "length": 120,
+            "data_hex": "7b2278223a5b7b22646967657374223a2233653233653831363030333935393461333338393466363536346531623133343862626437613030383864343263346163623733656561656435396330303964222c2267656e65726174696f6e223a312c226c656e677468223a312c22736c6f74223a317d5d7d",
+            "role": "manifest",
+            "deps": []
+          },
+          {
+            "id": 1,
+            "kind": "root",
+            "prefix": 1,
+            "namespace": {
+              "x": [
+                {
+                  "slot": 1,
+                  "generation": 1,
+                  "digest": "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d",
+                  "length": 1
+                }
+              ]
+            },
+            "manifest_ref": {
+              "slot": 0,
+              "generation": 1,
+              "digest": "898267270eae5afbe2d983e49cda965f62e02c1fade8b0cbdc89f236170eb7af",
+              "length": 120
+            },
+            "objects_hex": {
+              "x": "61"
+            },
+            "deps": [
+              0
+            ]
+          },
+          {
+            "id": 2,
+            "kind": "data",
+            "slot": 1,
+            "generation": 1,
+            "digest": "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d",
+            "length": 1,
+            "data_hex": "62",
+            "role": "chunk",
+            "deps": []
+          }
+        ],
+        "acknowledgements": [
+          {
+            "issued": 3,
+            "prefix": 1,
+            "anchors": [
+              0,
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      "producer": {
+        "admitted": false,
+        "exception": "AdmissionError",
+        "message": "event 1: references do not reconstruct ghost object x"
+      },
+      "consumer": {
+        "admitted": false,
+        "exception": "VerificationError",
+        "message": "event 1: references do not reconstruct ghost object x"
+      }
+    },
+    "late-chunk-valid": {
+      "trace": {
+        "schema": "retirement-frontier-trace-v1",
+        "operations": [
+          {
+            "op": "put",
+            "name": "x",
+            "chunks_hex": [
+              "61"
+            ]
+          }
+        ],
+        "events": [
+          {
+            "id": 0,
+            "kind": "data",
+            "slot": 0,
+            "generation": 1,
+            "digest": "756f7e588a5c3d285583a569c42098c85a0c3f25374bd0f810fb7d2e4a85b201",
+            "length": 120,
+            "data_hex": "7b2278223a5b7b22646967657374223a2263613937383131326361316262646361666163323331623339613233646334646137383665666638313437633465373262393830373738356166656534386262222c2267656e65726174696f6e223a312c226c656e677468223a312c22736c6f74223a317d5d7d",
+            "role": "manifest",
+            "deps": []
+          },
+          {
+            "id": 1,
+            "kind": "root",
+            "prefix": 1,
+            "namespace": {
+              "x": [
+                {
+                  "slot": 1,
+                  "generation": 1,
+                  "digest": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
+                  "length": 1
+                }
+              ]
+            },
+            "manifest_ref": {
+              "slot": 0,
+              "generation": 1,
+              "digest": "756f7e588a5c3d285583a569c42098c85a0c3f25374bd0f810fb7d2e4a85b201",
+              "length": 120
+            },
+            "objects_hex": {
+              "x": "61"
+            },
+            "deps": [
+              0
+            ]
+          },
+          {
+            "id": 2,
+            "kind": "data",
+            "slot": 1,
+            "generation": 1,
+            "digest": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
+            "length": 1,
+            "data_hex": "61",
+            "role": "chunk",
+            "deps": []
+          }
+        ],
+        "acknowledgements": [
+          {
+            "issued": 3,
+            "prefix": 1,
+            "anchors": [
+              0,
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      "producer": {
+        "admitted": true
+      },
+      "consumer": {
+        "admitted": true
+      },
+      "strict": {
+        "safe": false,
+        "publication_failures": [
+          {
+            "root": 1,
+            "ref_index": 1,
+            "allocation": 2
+          }
+        ],
+        "retirement_failures": [],
+        "acknowledgement_failures": [],
+        "frontier_obligations": 0,
+        "certificate": null,
+        "minimum_bad_cut": [
+          0,
+          1
+        ],
+        "producer_cpu_seconds": 1.0375000000006906e-05,
+        "certificate_bytes": 0
+      },
+      "fallback": {
+        "status": "safe",
+        "safe": true,
+        "minimum_bad_cut": null,
+        "choices_explored": 3,
+        "cpu_seconds": 1.0175000000001155e-05
+      },
+      "oracle_fallback": {
+        "safe": true,
+        "events": 3,
+        "candidate_cuts": 8,
+        "legal_cuts": 6,
+        "bad_cuts": 0,
+        "minimum_bad_cut": null,
+        "oracle_cpu_seconds": 0.00026126599999998223
+      },
+      "cuts": [
+        {
+          "cut": [],
+          "verdict": {
+            "safe": true,
+            "outcome": {
+              "ok": true,
+              "prefix": 0,
+              "root_event": null,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [],
+              "unreachable_slots": [],
+              "root_history": 0
+            }
+          }
+        },
+        {
+          "cut": [
+            0
+          ],
+          "verdict": {
+            "safe": true,
+            "outcome": {
+              "ok": true,
+              "prefix": 0,
+              "root_event": null,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [],
+              "unreachable_slots": [
+                0
+              ],
+              "root_history": 0
+            }
+          }
+        },
+        {
+          "cut": [
+            0,
+            1
+          ],
+          "verdict": {
+            "safe": true,
+            "outcome": {
+              "ok": true,
+              "prefix": 0,
+              "root_event": null,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [],
+              "unreachable_slots": [
+                0
+              ],
+              "root_history": 1,
+              "skipped": [
+                {
+                  "root_event": 1,
+                  "reason": "slot 1 is absent or free"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "cut": [
+            2
+          ],
+          "verdict": {
+            "safe": true,
+            "outcome": {
+              "ok": true,
+              "prefix": 0,
+              "root_event": null,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [],
+              "unreachable_slots": [
+                1
+              ],
+              "root_history": 0
+            }
+          }
+        },
+        {
+          "cut": [
+            0,
+            2
+          ],
+          "verdict": {
+            "safe": true,
+            "outcome": {
+              "ok": true,
+              "prefix": 0,
+              "root_event": null,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [],
+              "unreachable_slots": [
+                0,
+                1
+              ],
+              "root_history": 0
+            }
+          }
+        },
+        {
+          "cut": [
+            0,
+            1,
+            2
+          ],
+          "verdict": {
+            "safe": true,
+            "outcome": {
+              "ok": true,
+              "prefix": 1,
+              "root_event": 1,
+              "objects_hex": {
+                "x": "61"
+              },
+              "reference_counts": {
+                "1:1:ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb:1": 1
+              },
+              "reachable_slots": [
+                0,
+                1
+              ],
+              "unreachable_slots": [],
+              "root_history": 1
+            }
+          }
+        }
+      ]
+    },
+    "late-manifest-noncanonical": {
+      "trace": {
+        "schema": "retirement-frontier-trace-v1",
+        "operations": [
+          {
+            "op": "delete",
+            "name": "x"
+          }
+        ],
+        "events": [
+          {
+            "id": 0,
+            "kind": "root",
+            "prefix": 1,
+            "namespace": {},
+            "manifest_ref": {
+              "slot": 0,
+              "generation": 1,
+              "digest": "257c1be96ae69f4b01c2c69bdb6d78605f59175819fb007d0bf245bf48444c4a",
+              "length": 3
+            },
+            "objects_hex": {},
+            "deps": []
+          },
+          {
+            "id": 1,
+            "kind": "data",
+            "slot": 0,
+            "generation": 1,
+            "digest": "257c1be96ae69f4b01c2c69bdb6d78605f59175819fb007d0bf245bf48444c4a",
+            "length": 3,
+            "data_hex": "7b207d",
+            "role": "manifest",
+            "deps": []
+          }
+        ],
+        "acknowledgements": [
+          {
+            "issued": 2,
+            "prefix": 1,
+            "anchors": [
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "producer": {
+        "admitted": false,
+        "exception": "AdmissionError",
+        "message": "event 0: manifest reference does not bind canonical bytes"
+      },
+      "consumer": {
+        "admitted": false,
+        "exception": "VerificationError",
+        "message": "event 0: manifest reference does not bind canonical bytes"
+      }
+    },
+    "missing-manifest": {
+      "trace": {
+        "schema": "retirement-frontier-trace-v1",
+        "operations": [
+          {
+            "op": "delete",
+            "name": "x"
+          }
+        ],
+        "events": [
+          {
+            "id": 0,
+            "kind": "root",
+            "prefix": 1,
+            "namespace": {},
+            "manifest_ref": {
+              "slot": 0,
+              "generation": 1,
+              "digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "length": 2
+            },
+            "objects_hex": {},
+            "deps": []
+          }
+        ],
+        "acknowledgements": [
+          {
+            "issued": 1,
+            "prefix": 1,
+            "anchors": [
+              0
+            ]
+          }
+        ]
+      },
+      "producer": {
+        "admitted": true
+      },
+      "consumer": {
+        "admitted": true
+      },
+      "strict": {
+        "safe": false,
+        "publication_failures": [
+          {
+            "root": 0,
+            "ref_index": 0,
+            "allocation": null
+          }
+        ],
+        "retirement_failures": [],
+        "acknowledgement_failures": [],
+        "frontier_obligations": 0,
+        "certificate": null,
+        "minimum_bad_cut": [
+          0
+        ],
+        "producer_cpu_seconds": 3.81600000010085e-06,
+        "certificate_bytes": 0
+      },
+      "fallback": {
+        "status": "unsafe",
+        "safe": false,
+        "ack_index": 0,
+        "minimum_bad_cut": [
+          0
+        ],
+        "choices_explored": 2,
+        "cpu_seconds": 2.234299999992473e-05
+      },
+      "oracle_fallback": {
+        "safe": false,
+        "events": 1,
+        "candidate_cuts": 2,
+        "legal_cuts": 2,
+        "bad_cuts": 1,
+        "minimum_bad_cut": [
+          0
+        ],
+        "oracle_cpu_seconds": 2.2352999999974976e-05
+      },
+      "cuts": [
+        {
+          "cut": [],
+          "verdict": {
+            "safe": true,
+            "outcome": {
+              "ok": true,
+              "prefix": 0,
+              "root_event": null,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [],
+              "unreachable_slots": [],
+              "root_history": 0
+            }
+          }
+        },
+        {
+          "cut": [
+            0
+          ],
+          "verdict": {
+            "safe": false,
+            "reason": "acknowledgement",
+            "ack_index": 0,
+            "outcome": {
+              "ok": true,
+              "prefix": 0,
+              "root_event": null,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [],
+              "unreachable_slots": [],
+              "root_history": 1,
+              "skipped": [
+                {
+                  "root_event": 0,
+                  "reason": "slot 0 is absent or free"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "missing-chunk": {
+      "trace": {
+        "schema": "retirement-frontier-trace-v1",
+        "operations": [
+          {
+            "op": "put",
+            "name": "x",
+            "chunks_hex": [
+              "61"
+            ]
+          }
+        ],
+        "events": [
+          {
+            "id": 0,
+            "kind": "data",
+            "slot": 0,
+            "generation": 1,
+            "digest": "756f7e588a5c3d285583a569c42098c85a0c3f25374bd0f810fb7d2e4a85b201",
+            "length": 120,
+            "data_hex": "7b2278223a5b7b22646967657374223a2263613937383131326361316262646361666163323331623339613233646334646137383665666638313437633465373262393830373738356166656534386262222c2267656e65726174696f6e223a312c226c656e677468223a312c22736c6f74223a317d5d7d",
+            "role": "manifest",
+            "deps": []
+          },
+          {
+            "id": 1,
+            "kind": "root",
+            "prefix": 1,
+            "namespace": {
+              "x": [
+                {
+                  "slot": 1,
+                  "generation": 1,
+                  "digest": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
+                  "length": 1
+                }
+              ]
+            },
+            "manifest_ref": {
+              "slot": 0,
+              "generation": 1,
+              "digest": "756f7e588a5c3d285583a569c42098c85a0c3f25374bd0f810fb7d2e4a85b201",
+              "length": 120
+            },
+            "objects_hex": {
+              "x": "61"
+            },
+            "deps": [
+              0
+            ]
+          }
+        ],
+        "acknowledgements": [
+          {
+            "issued": 2,
+            "prefix": 1,
+            "anchors": [
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "producer": {
+        "admitted": true
+      },
+      "consumer": {
+        "admitted": true
+      },
+      "strict": {
+        "safe": false,
+        "publication_failures": [
+          {
+            "root": 1,
+            "ref_index": 1,
+            "allocation": null
+          }
+        ],
+        "retirement_failures": [],
+        "acknowledgement_failures": [],
+        "frontier_obligations": 0,
+        "certificate": null,
+        "minimum_bad_cut": [
+          0,
+          1
+        ],
+        "producer_cpu_seconds": 5.798000000001302e-06,
+        "certificate_bytes": 0
+      },
+      "fallback": {
+        "status": "unsafe",
+        "safe": false,
+        "ack_index": 0,
+        "minimum_bad_cut": [
+          0,
+          1
+        ],
+        "choices_explored": 3,
+        "cpu_seconds": 6.723999999991292e-05
+      },
+      "oracle_fallback": {
+        "safe": false,
+        "events": 2,
+        "candidate_cuts": 4,
+        "legal_cuts": 3,
+        "bad_cuts": 1,
+        "minimum_bad_cut": [
+          0,
+          1
+        ],
+        "oracle_cpu_seconds": 8.333299999996324e-05
+      },
+      "cuts": [
+        {
+          "cut": [],
+          "verdict": {
+            "safe": true,
+            "outcome": {
+              "ok": true,
+              "prefix": 0,
+              "root_event": null,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [],
+              "unreachable_slots": [],
+              "root_history": 0
+            }
+          }
+        },
+        {
+          "cut": [
+            0
+          ],
+          "verdict": {
+            "safe": true,
+            "outcome": {
+              "ok": true,
+              "prefix": 0,
+              "root_event": null,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [],
+              "unreachable_slots": [
+                0
+              ],
+              "root_history": 0
+            }
+          }
+        },
+        {
+          "cut": [
+            0,
+            1
+          ],
+          "verdict": {
+            "safe": false,
+            "reason": "acknowledgement",
+            "ack_index": 0,
+            "outcome": {
+              "ok": true,
+              "prefix": 0,
+              "root_event": null,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [],
+              "unreachable_slots": [
+                0
+              ],
+              "root_history": 1,
+              "skipped": [
+                {
+                  "root_event": 1,
+                  "reason": "slot 1 is absent or free"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "no-root-multiple-acks": {
+      "trace": {
+        "schema": "retirement-frontier-trace-v1",
+        "operations": [
+          {
+            "op": "delete",
+            "name": "x"
+          }
+        ],
+        "events": [
+          {
+            "id": 0,
+            "kind": "free",
+            "slot": 0,
+            "generation": 0,
+            "deps": []
+          }
+        ],
+        "acknowledgements": [
+          {
+            "issued": 1,
+            "prefix": 1,
+            "anchors": [
+              0
+            ]
+          },
+          {
+            "issued": 1,
+            "prefix": 1,
+            "anchors": []
+          }
+        ]
+      },
+      "producer": {
+        "admitted": true
+      },
+      "consumer": {
+        "admitted": true
+      },
+      "strict": {
+        "safe": false,
+        "publication_failures": [],
+        "retirement_failures": [],
+        "acknowledgement_failures": [
+          {
+            "ack_index": 0,
+            "prefix": 1
+          },
+          {
+            "ack_index": 1,
+            "prefix": 1
+          }
+        ],
+        "frontier_obligations": 0,
+        "certificate": null,
+        "minimum_bad_cut": [],
+        "producer_cpu_seconds": 4.2270000000232955e-06,
+        "certificate_bytes": 0
+      },
+      "fallback": {
+        "status": "unsafe",
+        "safe": false,
+        "ack_index": 1,
+        "minimum_bad_cut": [],
+        "choices_explored": 0,
+        "cpu_seconds": 2.6128999999985858e-05
+      },
+      "oracle_fallback": {
+        "safe": false,
+        "events": 1,
+        "candidate_cuts": 2,
+        "legal_cuts": 2,
+        "bad_cuts": 2,
+        "minimum_bad_cut": [],
+        "oracle_cpu_seconds": 1.740599999999759e-05
+      },
+      "cuts": [
+        {
+          "cut": [],
+          "verdict": {
+            "safe": false,
+            "reason": "acknowledgement",
+            "ack_index": 1,
+            "outcome": {
+              "ok": true,
+              "prefix": 0,
+              "root_event": null,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [],
+              "unreachable_slots": [],
+              "root_history": 0
+            }
+          }
+        },
+        {
+          "cut": [
+            0
+          ],
+          "verdict": {
+            "safe": false,
+            "reason": "acknowledgement",
+            "ack_index": 0,
+            "outcome": {
+              "ok": true,
+              "prefix": 0,
+              "root_event": null,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [],
+              "unreachable_slots": [],
+              "root_history": 0
+            }
+          }
+        }
+      ],
+      "reordered_fallback": {
+        "status": "unsafe",
+        "safe": false,
+        "ack_index": 0,
+        "minimum_bad_cut": [],
+        "choices_explored": 0,
+        "cpu_seconds": 3.7449999999994432e-06
+      },
+      "budget_zero": {
+        "status": "unsafe",
+        "safe": false,
+        "ack_index": 1,
+        "minimum_bad_cut": [],
+        "choices_explored": 0,
+        "cpu_seconds": 2.6439999999405828e-06
+      },
+      "reordered_budget_zero": {
+        "status": "unsafe",
+        "safe": false,
+        "ack_index": 0,
+        "minimum_bad_cut": [],
+        "choices_explored": 0,
+        "cpu_seconds": 2.363000000005222e-06
+      }
+    },
+    "mixed-multiple-acks": {
+      "trace": {
+        "schema": "retirement-frontier-trace-v1",
+        "operations": [
+          {
+            "op": "delete",
+            "name": "x"
+          },
+          {
+            "op": "delete",
+            "name": "x"
+          }
+        ],
+        "events": [
+          {
+            "id": 0,
+            "kind": "data",
+            "slot": 0,
+            "generation": 1,
+            "digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "length": 2,
+            "data_hex": "7b7d",
+            "role": "manifest",
+            "deps": []
+          },
+          {
+            "id": 1,
+            "kind": "root",
+            "prefix": 1,
+            "namespace": {},
+            "manifest_ref": {
+              "slot": 0,
+              "generation": 1,
+              "digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "length": 2
+            },
+            "objects_hex": {},
+            "deps": [
+              0
+            ]
+          }
+        ],
+        "acknowledgements": [
+          {
+            "issued": 2,
+            "prefix": 1,
+            "anchors": []
+          },
+          {
+            "issued": 2,
+            "prefix": 2,
+            "anchors": [
+              0
+            ]
+          }
+        ]
+      },
+      "producer": {
+        "admitted": true
+      },
+      "consumer": {
+        "admitted": true
+      },
+      "strict": {
+        "safe": false,
+        "publication_failures": [],
+        "retirement_failures": [],
+        "acknowledgement_failures": [
+          {
+            "ack_index": 0,
+            "prefix": 1
+          },
+          {
+            "ack_index": 1,
+            "prefix": 2
+          }
+        ],
+        "frontier_obligations": 0,
+        "certificate": null,
+        "minimum_bad_cut": [],
+        "producer_cpu_seconds": 5.246999999930502e-06,
+        "certificate_bytes": 0
+      },
+      "fallback": {
+        "status": "unsafe",
+        "safe": false,
+        "ack_index": 0,
+        "minimum_bad_cut": [],
+        "choices_explored": 2,
+        "cpu_seconds": 1.6414000000075646e-05
+      },
+      "oracle_fallback": {
+        "safe": false,
+        "events": 2,
+        "candidate_cuts": 4,
+        "legal_cuts": 3,
+        "bad_cuts": 3,
+        "minimum_bad_cut": [],
+        "oracle_cpu_seconds": 6.366499999999053e-05
+      },
+      "cuts": [
+        {
+          "cut": [],
+          "verdict": {
+            "safe": false,
+            "reason": "acknowledgement",
+            "ack_index": 0,
+            "outcome": {
+              "ok": true,
+              "prefix": 0,
+              "root_event": null,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [],
+              "unreachable_slots": [],
+              "root_history": 0
+            }
+          }
+        },
+        {
+          "cut": [
+            0
+          ],
+          "verdict": {
+            "safe": false,
+            "reason": "acknowledgement",
+            "ack_index": 0,
+            "outcome": {
+              "ok": true,
+              "prefix": 0,
+              "root_event": null,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [],
+              "unreachable_slots": [
+                0
+              ],
+              "root_history": 0
+            }
+          }
+        },
+        {
+          "cut": [
+            0,
+            1
+          ],
+          "verdict": {
+            "safe": false,
+            "reason": "acknowledgement",
+            "ack_index": 1,
+            "outcome": {
+              "ok": true,
+              "prefix": 1,
+              "root_event": 1,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [
+                0
+              ],
+              "unreachable_slots": [],
+              "root_history": 1
+            }
+          }
+        }
+      ],
+      "reordered_fallback": {
+        "status": "unsafe",
+        "safe": false,
+        "ack_index": 1,
+        "minimum_bad_cut": [],
+        "choices_explored": 2,
+        "cpu_seconds": 1.532299999995601e-05
+      },
+      "budget_zero": {
+        "status": "unknown",
+        "safe": null,
+        "reason": "choice budget exhausted",
+        "minimum_bad_cut": null,
+        "bad_cut": null,
+        "bad_cut_ack_index": null,
+        "choices_explored": 0,
+        "cpu_seconds": 2.6330000000296394e-06
+      },
+      "reordered_budget_zero": {
+        "status": "unknown",
+        "safe": null,
+        "reason": "choice budget exhausted",
+        "minimum_bad_cut": null,
+        "bad_cut": [
+          0
+        ],
+        "bad_cut_ack_index": 0,
+        "choices_explored": 0,
+        "cpu_seconds": 4.306000000009469e-06
+      }
+    },
+    "canonical-witnesses": {
+      "trace": {
+        "schema": "retirement-frontier-trace-v1",
+        "operations": [
+          {
+            "op": "delete",
+            "name": "x"
+          },
+          {
+            "op": "delete",
+            "name": "x"
+          },
+          {
+            "op": "delete",
+            "name": "x"
+          }
+        ],
+        "events": [
+          {
+            "id": 0,
+            "kind": "data",
+            "slot": 0,
+            "generation": 1,
+            "digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "length": 2,
+            "data_hex": "7b7d",
+            "role": "manifest",
+            "deps": []
+          },
+          {
+            "id": 1,
+            "kind": "root",
+            "prefix": 1,
+            "namespace": {},
+            "manifest_ref": {
+              "slot": 0,
+              "generation": 1,
+              "digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "length": 2
+            },
+            "objects_hex": {},
+            "deps": [
+              0
+            ]
+          },
+          {
+            "id": 2,
+            "kind": "data",
+            "slot": 1,
+            "generation": 1,
+            "digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "length": 2,
+            "data_hex": "7b7d",
+            "role": "manifest",
+            "deps": []
+          },
+          {
+            "id": 3,
+            "kind": "root",
+            "prefix": 2,
+            "namespace": {},
+            "manifest_ref": {
+              "slot": 1,
+              "generation": 1,
+              "digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "length": 2
+            },
+            "objects_hex": {},
+            "deps": [
+              1,
+              2
+            ]
+          },
+          {
+            "id": 4,
+            "kind": "data",
+            "slot": 2,
+            "generation": 1,
+            "digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "length": 2,
+            "data_hex": "7b7d",
+            "role": "manifest",
+            "deps": []
+          },
+          {
+            "id": 5,
+            "kind": "root",
+            "prefix": 3,
+            "namespace": {},
+            "manifest_ref": {
+              "slot": 2,
+              "generation": 1,
+              "digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+              "length": 2
+            },
+            "objects_hex": {},
+            "deps": [
+              3,
+              4
+            ]
+          },
+          {
+            "id": 6,
+            "kind": "free",
+            "slot": 0,
+            "generation": 1,
+            "deps": [
+              5
+            ]
+          }
+        ],
+        "acknowledgements": [
+          {
+            "issued": 7,
+            "prefix": 2,
+            "anchors": [
+              6
+            ]
+          },
+          {
+            "issued": 7,
+            "prefix": 0,
+            "anchors": [
+              6
+            ]
+          }
+        ]
+      },
+      "producer": {
+        "admitted": true
+      },
+      "consumer": {
+        "admitted": true
+      },
+      "strict": {
+        "safe": true,
+        "publication_failures": [],
+        "retirement_failures": [],
+        "acknowledgement_failures": [],
+        "frontier_obligations": 1,
+        "certificate": {
+          "schema": "retirement-frontier-certificate-v1",
+          "publication": [
+            {
+              "root": 1,
+              "ref_index": 0,
+              "allocation": 0
+            },
+            {
+              "root": 3,
+              "ref_index": 0,
+              "allocation": 2
+            },
+            {
+              "root": 5,
+              "ref_index": 0,
+              "allocation": 4
+            }
+          ],
+          "retirement": [
+            {
+              "writer": 6,
+              "guard_root": 5
+            }
+          ],
+          "acknowledgement": [
+            {
+              "ack_index": 0,
+              "root": 5
+            },
+            {
+              "ack_index": 1,
+              "root": -1
+            }
+          ]
+        },
+        "minimum_bad_cut": null,
+        "producer_cpu_seconds": 1.1446999999997765e-05,
+        "certificate_bytes": 297
+      },
+      "fallback": {
+        "status": "safe",
+        "safe": true,
+        "minimum_bad_cut": null,
+        "choices_explored": 4,
+        "cpu_seconds": 1.1557999999967095e-05
+      },
+      "oracle_fallback": {
+        "safe": true,
+        "events": 7,
+        "candidate_cuts": 128,
+        "legal_cuts": 16,
+        "bad_cuts": 0,
+        "minimum_bad_cut": null,
+        "oracle_cpu_seconds": 0.0009346330000000735
+      },
+      "cuts": [
+        {
+          "cut": [],
+          "verdict": {
+            "safe": true,
+            "outcome": {
+              "ok": true,
+              "prefix": 0,
+              "root_event": null,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [],
+              "unreachable_slots": [],
+              "root_history": 0
+            }
+          }
+        },
+        {
+          "cut": [
+            0
+          ],
+          "verdict": {
+            "safe": true,
+            "outcome": {
+              "ok": true,
+              "prefix": 0,
+              "root_event": null,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [],
+              "unreachable_slots": [
+                0
+              ],
+              "root_history": 0
+            }
+          }
+        },
+        {
+          "cut": [
+            0,
+            1
+          ],
+          "verdict": {
+            "safe": true,
+            "outcome": {
+              "ok": true,
+              "prefix": 1,
+              "root_event": 1,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [
+                0
+              ],
+              "unreachable_slots": [],
+              "root_history": 1
+            }
+          }
+        },
+        {
+          "cut": [
+            2
+          ],
+          "verdict": {
+            "safe": true,
+            "outcome": {
+              "ok": true,
+              "prefix": 0,
+              "root_event": null,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [],
+              "unreachable_slots": [
+                1
+              ],
+              "root_history": 0
+            }
+          }
+        },
+        {
+          "cut": [
+            0,
+            2
+          ],
+          "verdict": {
+            "safe": true,
+            "outcome": {
+              "ok": true,
+              "prefix": 0,
+              "root_event": null,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [],
+              "unreachable_slots": [
+                0,
+                1
+              ],
+              "root_history": 0
+            }
+          }
+        },
+        {
+          "cut": [
+            0,
+            1,
+            2
+          ],
+          "verdict": {
+            "safe": true,
+            "outcome": {
+              "ok": true,
+              "prefix": 1,
+              "root_event": 1,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [
+                0
+              ],
+              "unreachable_slots": [
+                1
+              ],
+              "root_history": 1
+            }
+          }
+        },
+        {
+          "cut": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "verdict": {
+            "safe": true,
+            "outcome": {
+              "ok": true,
+              "prefix": 2,
+              "root_event": 3,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [
+                1
+              ],
+              "unreachable_slots": [
+                0
+              ],
+              "root_history": 2
+            }
+          }
+        },
+        {
+          "cut": [
+            4
+          ],
+          "verdict": {
+            "safe": true,
+            "outcome": {
+              "ok": true,
+              "prefix": 0,
+              "root_event": null,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [],
+              "unreachable_slots": [
+                2
+              ],
+              "root_history": 0
+            }
+          }
+        },
+        {
+          "cut": [
+            0,
+            4
+          ],
+          "verdict": {
+            "safe": true,
+            "outcome": {
+              "ok": true,
+              "prefix": 0,
+              "root_event": null,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [],
+              "unreachable_slots": [
+                0,
+                2
+              ],
+              "root_history": 0
+            }
+          }
+        },
+        {
+          "cut": [
+            0,
+            1,
+            4
+          ],
+          "verdict": {
+            "safe": true,
+            "outcome": {
+              "ok": true,
+              "prefix": 1,
+              "root_event": 1,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [
+                0
+              ],
+              "unreachable_slots": [
+                2
+              ],
+              "root_history": 1
+            }
+          }
+        },
+        {
+          "cut": [
+            2,
+            4
+          ],
+          "verdict": {
+            "safe": true,
+            "outcome": {
+              "ok": true,
+              "prefix": 0,
+              "root_event": null,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [],
+              "unreachable_slots": [
+                1,
+                2
+              ],
+              "root_history": 0
+            }
+          }
+        },
+        {
+          "cut": [
+            0,
+            2,
+            4
+          ],
+          "verdict": {
+            "safe": true,
+            "outcome": {
+              "ok": true,
+              "prefix": 0,
+              "root_event": null,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [],
+              "unreachable_slots": [
+                0,
+                1,
+                2
+              ],
+              "root_history": 0
+            }
+          }
+        },
+        {
+          "cut": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "verdict": {
+            "safe": true,
+            "outcome": {
+              "ok": true,
+              "prefix": 1,
+              "root_event": 1,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [
+                0
+              ],
+              "unreachable_slots": [
+                1,
+                2
+              ],
+              "root_history": 1
+            }
+          }
+        },
+        {
+          "cut": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "verdict": {
+            "safe": true,
+            "outcome": {
+              "ok": true,
+              "prefix": 2,
+              "root_event": 3,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [
+                1
+              ],
+              "unreachable_slots": [
+                0,
+                2
+              ],
+              "root_history": 2
+            }
+          }
+        },
+        {
+          "cut": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "verdict": {
+            "safe": true,
+            "outcome": {
+              "ok": true,
+              "prefix": 3,
+              "root_event": 5,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [
+                2
+              ],
+              "unreachable_slots": [
+                0,
+                1
+              ],
+              "root_history": 3
+            }
+          }
+        },
+        {
+          "cut": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "verdict": {
+            "safe": true,
+            "outcome": {
+              "ok": true,
+              "prefix": 3,
+              "root_event": 5,
+              "objects_hex": {},
+              "reference_counts": {},
+              "reachable_slots": [
+                2
+              ],
+              "unreachable_slots": [
+                1
+              ],
+              "root_history": 3
+            }
+          }
+        }
+      ],
+      "certificate": {
+        "schema": "retirement-frontier-certificate-v1",
+        "publication": [
+          {
+            "root": 1,
+            "ref_index": 0,
+            "allocation": 0
+          },
+          {
+            "root": 3,
+            "ref_index": 0,
+            "allocation": 2
+          },
+          {
+            "root": 5,
+            "ref_index": 0,
+            "allocation": 4
+          }
+        ],
+        "retirement": [
+          {
+            "writer": 6,
+            "guard_root": 5
+          }
+        ],
+        "acknowledgement": [
+          {
+            "ack_index": 0,
+            "root": 5
+          },
+          {
+            "ack_index": 1,
+            "root": -1
+          }
+        ]
+      },
+      "canonical_accepted": true,
+      "smaller_qualifying_roots": [
+        {
+          "section": "retirement",
+          "accepted": false,
+          "exception": "VerificationError",
+          "message": "certificate rows are incomplete, reordered, duplicated, or incorrect"
+        },
+        {
+          "section": "acknowledgement",
+          "accepted": false,
+          "exception": "VerificationError",
+          "message": "certificate rows are incomplete, reordered, duplicated, or incorrect"
+        }
+      ]
+    }
+  },
+  "cli": [
+    {
+      "mode": "trace-role",
+      "value": [],
+      "parsers": {
+        "producer": "AdmissionError",
+        "consumer": "VerificationError"
+      },
+      "returncode": 2,
+      "stdout": "{\n  \"error\": \"event 1: invalid data role\",\n  \"ok\": false,\n  \"status\": \"malformed\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "trace-role",
+      "value": {},
+      "parsers": {
+        "producer": "AdmissionError",
+        "consumer": "VerificationError"
+      },
+      "returncode": 2,
+      "stdout": "{\n  \"error\": \"event 1: invalid data role\",\n  \"ok\": false,\n  \"status\": \"malformed\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "trace-role",
+      "value": null,
+      "parsers": {
+        "producer": "AdmissionError",
+        "consumer": "VerificationError"
+      },
+      "returncode": 2,
+      "stdout": "{\n  \"error\": \"event 1: invalid data role\",\n  \"ok\": false,\n  \"status\": \"malformed\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "trace-kind",
+      "value": [],
+      "parsers": {
+        "producer": "AdmissionError",
+        "consumer": "VerificationError"
+      },
+      "returncode": 2,
+      "stdout": "{\n  \"error\": \"event 1: kind must be a string\",\n  \"ok\": false,\n  \"status\": \"malformed\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "trace-kind",
+      "value": {},
+      "parsers": {
+        "producer": "AdmissionError",
+        "consumer": "VerificationError"
+      },
+      "returncode": 2,
+      "stdout": "{\n  \"error\": \"event 1: kind must be a string\",\n  \"ok\": false,\n  \"status\": \"malformed\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "trace-kind",
+      "value": null,
+      "parsers": {
+        "producer": "AdmissionError",
+        "consumer": "VerificationError"
+      },
+      "returncode": 2,
+      "stdout": "{\n  \"error\": \"event 1: kind must be a string\",\n  \"ok\": false,\n  \"status\": \"malformed\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "image-role",
+      "value": [],
+      "parsers": {},
+      "returncode": 2,
+      "stdout": "{\n  \"ok\": false,\n  \"reason\": \"slot 0 has an invalid data role\",\n  \"status\": \"malformed\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "image-role",
+      "value": {},
+      "parsers": {},
+      "returncode": 2,
+      "stdout": "{\n  \"ok\": false,\n  \"reason\": \"slot 0 has an invalid data role\",\n  \"status\": \"malformed\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "image-role",
+      "value": null,
+      "parsers": {},
+      "returncode": 2,
+      "stdout": "{\n  \"ok\": false,\n  \"reason\": \"slot 0 has an invalid data role\",\n  \"status\": \"malformed\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "image-kind",
+      "value": [],
+      "parsers": {},
+      "returncode": 2,
+      "stdout": "{\n  \"ok\": false,\n  \"reason\": \"slot 0 has a malformed record\",\n  \"status\": \"malformed\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "image-kind",
+      "value": {},
+      "parsers": {},
+      "returncode": 2,
+      "stdout": "{\n  \"ok\": false,\n  \"reason\": \"slot 0 has a malformed record\",\n  \"status\": \"malformed\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "image-kind",
+      "value": null,
+      "parsers": {},
+      "returncode": 2,
+      "stdout": "{\n  \"ok\": false,\n  \"reason\": \"slot 0 has a malformed record\",\n  \"status\": \"malformed\"\n}\n",
+      "stderr": ""
+    }
+  ],
+  "all_directed_checks_passed": true,
+  "directed_checks": 37
+}

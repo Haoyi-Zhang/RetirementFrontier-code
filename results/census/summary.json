@@ -1,0 +1,31 @@
+{
+  "candidate_cuts": 2129920,
+  "consumer_checks": 3072,
+  "cpu_seconds": 27.078560145,
+  "disagreements": 0,
+  "families": {
+    "retired-free": {
+      "bad_cuts": 131328,
+      "candidate_cuts": 2097152,
+      "consumer_checks": 3072,
+      "graphs": 32768,
+      "legal_cuts": 450496,
+      "minimum_witness_checks": 29696,
+      "safe_graphs": 3072
+    },
+    "unretired-reuse": {
+      "bad_cuts": 4464,
+      "candidate_cuts": 32768,
+      "graphs": 1024,
+      "legal_cuts": 10976,
+      "minimum_witness_checks": 1024,
+      "safe_graphs": 0
+    }
+  },
+  "graphs": 33792,
+  "max_rss_kib": 116268,
+  "minimum_witness_checks": 30720,
+  "safe_graphs": 3072,
+  "stage": "census",
+  "wall_seconds": 27.128748235999865
+}

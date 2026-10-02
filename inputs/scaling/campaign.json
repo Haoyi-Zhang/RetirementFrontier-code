@@ -1,0 +1,41 @@
+{
+  "chunk_bytes": 256,
+  "chunks_per_put": 4,
+  "delete_probability_for_churn": "1/4",
+  "families": [
+    "shared",
+    "unique",
+    "churn"
+  ],
+  "names": 8,
+  "policies": {
+    "certified-dedup": {
+      "offline_consumer": true,
+      "same_trace_as": "unchecked-dedup"
+    },
+    "no-dedup": {
+      "batch": 4,
+      "deduplicate": false
+    },
+    "sync-metadata": {
+      "batch": 1,
+      "deduplicate": true
+    },
+    "unchecked-dedup": {
+      "batch": 4,
+      "deduplicate": true
+    }
+  },
+  "seeds": [
+    20000,
+    20001,
+    20002,
+    20003,
+    20004
+  ],
+  "sizes": [
+    32,
+    128,
+    512
+  ]
+}
