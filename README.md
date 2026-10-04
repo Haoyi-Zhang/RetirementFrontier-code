@@ -72,7 +72,7 @@ No concurrent publication/cleaning, torn writes, distributed faults, generation 
 
 `src/`: model, analyzer, separate consumer, recovery, oracle, solver, engine and POSIX illustration. `scripts/`: bounded experiments and checks. `tests/`: regressions. `inputs/`: exact public bytes and deterministic configurations/cases. `results/`: primary outputs and derived summaries. `docs/`: model/format/claim documentation. `claim_evidence_ledger.csv`: scientific claim-to-evidence map. `external_resources.csv`, `PROVENANCE.md`, and `licenses/`: source attribution.
 
-Generative AI assisted research formulation, proof drafting, programming, debugging, experiment orchestration, analysis, figures and writing. Computational observations come from the executed supplied programs. Human authors must substantively verify, contribute, approve, resolve rights and accept responsibility before external submission. No external publication or independent peer review is implied by the package.
+Computational observations come from the executed supplied programs; the package does not imply independent peer review.
 
 ## Directed contract checks
 

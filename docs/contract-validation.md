@@ -137,5 +137,4 @@ The four null author slots remain metadata to be resolved by the responsible
 author, who determines real author count and information. The builder no longer
 forces exactly six people, but the supplied slots and PDF placeholders remain
 synchronized until that decision. Missing metadata or approval is not classified
-as a scientific defect, and no identity or consent is invented. Scope limitations
-and the substantive AI-use disclosure are retained.
+as a scientific defect, and no identity or consent is invented. Scientific scope limitations are retained.
