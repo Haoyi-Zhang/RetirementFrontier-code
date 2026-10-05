@@ -29,7 +29,9 @@ The public-byte set is narrow and intentionally unchanged across versions. Repor
 `TraceBuilder` updates in-memory specification maps and appends events; it has no
 separate online medium or medium-backed read API. The harness admits the emitted
 trace and independently materializes chosen cuts, then recovery reads the image.
-The oracle compares the recovered bytes against ghost expectations afterward.
+The small-domain oracle compares recovered bytes with ghost expectations.
+The separate 720-image campaign checks recovery success and repeatability,
+not a fresh oracle comparison of every recovered namespace.
 Whole-trace binding admission checks later allocations as well as earlier ones.
 Neither offline reconstruction nor the separate POSIX illustration establishes
 an online implementation that is absent from this artifact.

@@ -72,7 +72,10 @@ No concurrent publication/cleaning, torn writes, distributed faults, generation 
 
 `src/`: model, analyzer, separate consumer, recovery, oracle, solver, engine and POSIX illustration. `scripts/`: bounded experiments and checks. `tests/`: regressions. `inputs/`: exact public bytes and deterministic configurations/cases. `results/`: primary outputs and derived summaries. `docs/`: model/format/claim documentation. `claim_evidence_ledger.csv`: scientific claim-to-evidence map. `external_resources.csv`, `PROVENANCE.md`, and `licenses/`: source attribution.
 
-Computational observations come from the executed supplied programs; the package does not imply independent peer review.
+Small-domain recovery compares bytes with the offline oracle. The 720-image
+campaign checks recovery success, multiplicity, repeated recovery and
+reclamation; it does not separately compare every returned namespace with
+the oracle's expected bytes.
 
 ## Directed contract checks
 
