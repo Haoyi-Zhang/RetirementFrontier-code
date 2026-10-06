@@ -13,6 +13,7 @@ REPO = Path(__file__).resolve().parents[1]
 RESULTS = REPO / "results"
 REPRODUCE = REPO / "scripts" / "reproduce.py"
 STAGES = ("tests", "pilots", "census", "heldout", "fallback", "scaling", "public")
+CAMPAIGN_TIMEOUT_SECONDS = 45 * 60
 RESULT_PATHS = {
     "tests": RESULTS / "pilots" / "unit-tests.json",
     "pilots": RESULTS / "pilots" / "pilot-summary.json",
@@ -36,11 +37,14 @@ def main() -> int:
     start = time.perf_counter()
     completed: list[dict[str, Any]] = []
     for stage in STAGES:
+        remaining = CAMPAIGN_TIMEOUT_SECONDS - (time.perf_counter() - start)
+        if remaining <= 0:
+            raise TimeoutError("campaign exceeded the whole-run wall-time ceiling")
         print(f"[reproduce] {stage} (fresh process)", flush=True)
         proc = subprocess.run(
             [sys.executable, str(REPRODUCE), "--stage", stage],
             cwd=REPO,
-            timeout=45 * 60,
+            timeout=remaining,
             check=False,
         )
         if proc.returncode != 0:

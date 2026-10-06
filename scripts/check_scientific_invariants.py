@@ -3,6 +3,7 @@
 from __future__ import annotations
 import json
 import pathlib
+import re
 import sys
 sys.dont_write_bytecode = True
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -37,7 +38,7 @@ def check(root: pathlib.Path = ROOT) -> dict:
         'public.policy_rows':9, 'public.unchanged_across_selected_tags':True,
         'recovery.images':720, 'recovery.scaling_images':567,
         'recovery.public_images':153, 'recovery.unreachable_slots_total':3765,
-        'tests.methods':75, 'tests.returncode':0, 'tests.skipped':0,
+        'tests.returncode':0, 'tests.skipped':0,
         'solver.unknown':0,
     }
     mode = read(root/'results/summary/execution-mode.json')
@@ -63,6 +64,18 @@ def check(root: pathlib.Path = ROOT) -> dict:
         try: actual=get(summary,path)
         except KeyError:actual=None
         require('summary.'+path,type(actual) is type(value) and actual==value,actual)
+    # Preserve retained campaign metadata while allowing a rerun to include
+    # additional regressions. Never substitute a source-era constant for the
+    # number actually reported by that run's unittest output.
+    tests=read(root/'results/pilots/unit-tests.json')
+    count=tests.get('test_methods')
+    ran=re.search(r'Ran (\d+) tests? in ',tests.get('stderr','')+tests.get('stdout',''))
+    require('test count matches primary runner output and summary',
+            type(count) is int and count>=75 and ran is not None
+            and int(ran.group(1))==count and summary['tests']['methods']==count,count)
+    require('test exit and skips match primary record',
+            tests.get('returncode')==summary['tests']['returncode']
+            and tests.get('skipped',0)==summary['tests']['skipped'])
     census=rows(root,'census/graphs.jsonl')
     variants=rows(root,'heldout/variants.jsonl')
     truth=rows(root,'fallback/truth-table.jsonl')

@@ -118,7 +118,8 @@ def _slot_summary(image: dict[str, Any]) -> tuple[list[int], set[int]]:
     occupied: list[int] = []
     events: set[int] = set()
     for key, record in _slots(image).items():
-        if not isinstance(key, str) or not key.isdigit():
+        if (not isinstance(key, str) or not key.isascii() or not key.isdecimal()
+                or len(key) > len(str(MAX_ID))):
             raise RecoveryError("image contains a non-integer slot key")
         slot = int(key)
         if not (0 <= slot <= MAX_ID) or str(slot) != key:

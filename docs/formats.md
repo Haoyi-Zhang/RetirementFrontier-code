@@ -63,6 +63,13 @@ model. No device cache, filesystem `fsync`, concurrency, distributed failure,
 malicious logger, hash-collision attack, or resumed writes after recovery is
 modeled.
 
+The JSON decoder rejects nonfinite extension tokens and exponent overflow
+that would otherwise decode to an infinite float. Finite floats retain their
+JSON-decoder type and remain inadmissible in integer identifier fields.
+Image slot keys are canonical ASCII decimal strings within the identifier
+bound; non-ASCII digit forms and overlong keys yield a malformed image result
+without entering integer conversion.
+
 ## Complete-trace allocation binding
 
 Admission has two phases in each parser. The first normalizes fields, indexes

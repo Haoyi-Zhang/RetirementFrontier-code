@@ -35,7 +35,7 @@ python scripts/run_posix_smoke.py
 python scripts/validate_release.py
 ```
 
-This runs every non-SMT stage (74 test methods pass and one solver-dependent method is explicitly skipped), records omitted SMT queries, and never calls an omission a successful solver check. `--require-smt` fails before the campaign if the actual C API is unavailable. Query-budget exhaustion in the bounded fallback analyzer is `unknown`, not `safe`.
+This runs every non-SMT stage (81 test methods pass and one solver-dependent method is explicitly skipped), records omitted SMT queries, and never calls an omission a successful solver check. `--require-smt` fails before the campaign if the actual C API is unavailable. Query-budget exhaustion in the bounded fallback analyzer is `unknown`, not `safe`.
 
 ## Certificate interface
 
@@ -48,9 +48,25 @@ The certificate can be removed after inspection. The consumer reparses the origi
 
 ## What to check
 
-The canonical full result contains 33,792 dependency graphs and 2,129,920 candidate event sets; 3,072 graphs are safe and 30,720 unsafe graphs have oracle-checked minimum witnesses. The retained regression set contains 256 variants (75 safe, 181 unsafe). Fallback tests cover 255 formulas and 2,040 assignments plus 92 fixed-candidate formulas. Scaling has 45 base inputs and 180 policy report rows, with at most 5,599 events. There are 720 byte-recovery images and 3,765 unreachable occupied-slot observations. The full run has 65 evaluation SMT queries plus two pilot queries, 67 total, with zero unknowns. The current suite has 75 methods.
+The retained full result contains 33,792 dependency graphs and 2,129,920 candidate event sets; 3,072 graphs are safe and 30,720 unsafe graphs have oracle-checked minimum witnesses. The retained regression set contains 256 variants (75 safe, 181 unsafe). Fallback tests cover 255 formulas and 2,040 assignments plus 92 fixed-candidate formulas. Scaling has 45 base inputs and 180 policy report rows, with at most 5,599 events. There are 720 byte-recovery images and 3,765 unreachable occupied-slot observations. The retained full run has 65 evaluation SMT queries plus two pilot queries, 67 total, with zero unknowns. Its test record has 75 methods; the current suite has 82, including seven additional numeric-input and whole-run-deadline regressions. A local Windows run executes 81 and explicitly skips the unavailable solver test; it does not replace the retained POSIX measurements or constitute a full seven-stage reproduction.
 
 `check_scientific_invariants.py` checks exact JSON paths and cross-checks primary row counts, decisions, minimum-witness flags, certificate acceptance and byte arithmetic. It does not accept a matching number found elsewhere in a JSON tree. Assertions are ordinary executable checks, not proof-assistant verification.
+
+A separate local Windows API check re-enumerates the census, retained variants,
+fallback assignments, and 92 fixed-candidate minima without a disagreement. It
+regenerates 144 physical policy traces and checks 720 recovered images against
+the selected root's specification bytes, multiplicities, repeated recovery, and
+quiescent reclamation. The specification-byte comparison is additional to the
+historical timed recovery path. No SMT query or POSIX fixture runs in this check;
+the retained primary result files and host measurements remain unchanged.
+
+The test count must agree between the primary runner output and its summary,
+with the retained 75-method suite as a lower bound. New regressions need not
+masquerade as the historical suite. `run_all.py` shares one 45-minute wall-time
+deadline across all seven stages. The prepared scientific-checks workflow runs
+from this flat artifact root on Ubuntu 24.04 with a 40-minute scientific-command
+deadline, a 45-minute job cap, resource limits, mandatory SMT preflight, and raw
+output uploads even after failure.
 
 To compare a same-mode clean rerun against another extracted artifact directory:
 
@@ -86,9 +102,10 @@ python scripts/check_targeted.py
 The explicit fixtures in `tests/targeted_cases.py` bypass the workload generator.
 They cover forward manifest/chunk bindings, truly missing allocations, multiple
 acknowledgements and budgets, canonical witnesses with several qualifying roots,
-and non-string role/kind inputs through the CLI. Pre-edit observations actually
-executed on the supplied packet are retained in
-`results/targeted/binding-minimum-format-before.json`; current observations are
-written to `binding-minimum-format-after.json`. The former is counterexample
-evidence, not a current safety result. See `docs/contract-validation.md` for the
-meaning and measurement provenance of both.
+and non-string role/kind inputs through the CLI. See `docs/contract-validation.md`
+for the contract definitions and measurement provenance.
+
+## License
+
+Original project code is available under the MIT License. Notices for third-party
+inputs and dependencies are retained in `PROVENANCE.md` and `licenses/`.

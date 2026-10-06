@@ -57,12 +57,27 @@ def load_result(root:Path,name:str):
 def tree_files(root:Path,folder:str):
     return {p.relative_to(root/folder).as_posix():p.read_bytes() for p in (root/folder).rglob('*') if p.is_file() and '__pycache__' not in p.parts}
 
+def package_hygiene(root:Path):
+    errors=[]
+    for directory,folders,files in os.walk(root):
+        here=Path(directory)
+        # A checkout's root Git metadata is not a distributed research file.
+        # Nested repositories and disposable files remain errors.
+        if here==root:
+            folders[:]=[name for name in folders if name!='.git']
+            files=[name for name in files if name!='.git']
+        for name in folders:
+            if name in {'.git','.hg','.svn','__pycache__'}:
+                errors.append('disposable path '+(here/name).relative_to(root).as_posix())
+        for name in files:
+            p=here/name
+            if p.suffix in {'.pyc','.zip','.aux','.bbl','.blg','.log','.out','.toc'}:
+                errors.append('disposable or nested file '+p.relative_to(root).as_posix())
+    return errors
+
 def validate(compare:Path|None=None):
     report=check(ROOT);errors=list(report['errors'])
-    for p in ROOT.rglob('*'):
-        if p.name in {'.git','.hg','.svn','__pycache__'}:errors.append('disposable path '+p.relative_to(ROOT).as_posix())
-        if p.is_file() and p.suffix in {'.pyc','.zip','.aux','.bbl','.blg','.log','.out','.toc'}:
-            errors.append('disposable or nested file '+p.relative_to(ROOT).as_posix())
+    errors.extend(package_hygiene(ROOT))
     comparisons=[]
     if compare is not None:
         other=check(compare)

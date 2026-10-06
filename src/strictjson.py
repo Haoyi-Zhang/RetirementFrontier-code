@@ -1,10 +1,12 @@
 """Strict JSON decoding for trace, image, and certificate trust boundaries.
 
-Rejects duplicate object members and JSON's non-standard NaN/Infinity tokens.
+Rejects duplicate object members, JSON's non-standard NaN/Infinity tokens,
+and exponent notation that overflows the decoder's finite float range.
 Canonical type/range checks remain the responsibility of the schema parser.
 """
 from __future__ import annotations
 import json
+import math
 from typing import Any, IO
 
 class DuplicateKeyError(ValueError):
@@ -21,10 +23,17 @@ def _object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
 def _constant(token: str) -> Any:
     raise ValueError(f"non-finite JSON number is not permitted: {token}")
 
+def _float(token: str) -> float:
+    value = float(token)
+    if not math.isfinite(value):
+        raise ValueError(f"JSON number overflows the finite float range: {token}")
+    return value
+
 def loads(data: str | bytes | bytearray, **kwargs: Any) -> Any:
-    if 'object_pairs_hook' in kwargs or 'parse_constant' in kwargs:
-        raise TypeError('strict JSON decoder owns object_pairs_hook and parse_constant')
-    return json.loads(data, object_pairs_hook=_object, parse_constant=_constant, **kwargs)
+    if any(key in kwargs for key in ('object_pairs_hook', 'parse_constant', 'parse_float')):
+        raise TypeError('strict JSON decoder owns object_pairs_hook, parse_constant and parse_float')
+    return json.loads(data, object_pairs_hook=_object, parse_constant=_constant,
+                      parse_float=_float, **kwargs)
 
 def load(fp: IO[str] | IO[bytes], **kwargs: Any) -> Any:
     return loads(fp.read(), **kwargs)
