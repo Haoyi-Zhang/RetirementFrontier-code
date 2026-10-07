@@ -410,17 +410,15 @@ def verify_certificate(trace: dict[str, Any], certificate: dict[str, Any]) -> di
 
     expected_ret: list[dict[str, int]] = []
     for _slot, slot_writers in sorted(parsed["writers"].items()):
-        earlier_allocations: list[int] = []
+        frontier = -1
         for writer in slot_writers:
-            threatened = [allocation for allocation in earlier_allocations if last_user.get(allocation, -1) >= 0]
-            frontier = max((last_user[allocation] for allocation in threatened), default=-1)
             if frontier >= 0:
                 guard = greatest_root[writer]
                 if guard <= frontier:
                     raise VerificationError("trace fails retirement; no positive certificate exists")
                 expected_ret.append({"writer": writer, "guard_root": guard})
             if events[writer]["kind"] == "data":
-                earlier_allocations.append(writer)
+                frontier = max(frontier, last_user.get(writer, -1))
 
     expected_ack: list[dict[str, int]] = []
     for ack_index, ack in enumerate(parsed["acks"]):

@@ -32,11 +32,9 @@ def analyze_model(model: Model, minimum: bool = False) -> dict[str, Any]:
     retirement_failures: list[dict[str, Any]] = []
     frontier_obligations = 0
     for slot, writers in sorted(model.writers_by_slot.items()):
-        earlier_allocations: list[int] = []
+        frontier = -1
         for writer in writers:
             event = model.events[writer]
-            threatened = [a for a in earlier_allocations if last_user.get(a, -1) >= 0]
-            frontier = max((last_user[a] for a in threatened), default=-1)
             if frontier >= 0:
                 frontier_obligations += 1
                 forced_roots = [r for r in model.roots if model.closures[writer] & (1 << r)]
@@ -46,7 +44,7 @@ def analyze_model(model: Model, minimum: bool = False) -> dict[str, Any]:
                 else:
                     retirement_rows.append({"writer": writer, "guard_root": guard})
             if event["kind"] == "data":
-                earlier_allocations.append(writer)
+                frontier = max(frontier, last_user.get(writer, -1))
 
     acknowledgement_rows: list[dict[str, int]] = []
     acknowledgement_failures: list[dict[str, Any]] = []

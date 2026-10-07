@@ -35,9 +35,27 @@ python scripts/run_posix_smoke.py
 python scripts/validate_release.py
 ```
 
-This runs every non-SMT stage (81 test methods pass and one solver-dependent method is explicitly skipped), records omitted SMT queries, and never calls an omission a successful solver check. `--require-smt` fails before the campaign if the actual C API is unavailable. Query-budget exhaustion in the bounded fallback analyzer is `unknown`, not `safe`.
+This requests every non-SMT stage, records omitted SMT queries, and never calls an omission a successful solver check. The preceding 82-method standard-library validation executed 81 methods and explicitly skipped one solver-dependent method; that is retained evidence, not a fresh run of the enlarged suite. `--require-smt` fails before the campaign if the actual C API is unavailable. Query-budget exhaustion in the bounded fallback analyzer is `unknown`, not `safe`.
 
 ## Certificate interface
+
+Current producer and code-separated consumer independently keep a running
+same-slot maximum after collecting last users over the complete trace. Each
+writer is checked before its own DATA allocation updates the maximum; FREEs
+never reset it. This removes repeated earlier-allocation scans, not publication
+searches, byte/digest validation, closure storage or minimum-cut pair enumeration.
+It makes no measured end-to-end or device performance claim. Three new portable
+methods are included by the existing `scripts/run_tests.py` discovery and CI:
+
+```sh
+python -B -m unittest discover -s tests -p test_slot_frontier.py -v
+```
+
+This command needs only current included sources/fixtures and the standard
+library. Frozen 75-method campaign records and the preceding 82-method suite
+remain historical evidence; the current discovery contains 85 methods, not a
+claim that the full campaign has been rerun. New checks compare a dense pair
+definition, the unchanged pair baseline and bounded concrete all-cut recovery.
 
 ```sh
 python src/cli.py certify inputs/pilot-trace.json --minimum --certificate certificate.json
@@ -48,7 +66,7 @@ The certificate can be removed after inspection. The consumer reparses the origi
 
 ## What to check
 
-The retained full result contains 33,792 dependency graphs and 2,129,920 candidate event sets; 3,072 graphs are safe and 30,720 unsafe graphs have oracle-checked minimum witnesses. The retained regression set contains 256 variants (75 safe, 181 unsafe). Fallback tests cover 255 formulas and 2,040 assignments plus 92 fixed-candidate formulas. Scaling has 45 base inputs and 180 policy report rows, with at most 5,599 events. There are 720 byte-recovery images and 3,765 unreachable occupied-slot observations. The retained full run has 65 evaluation SMT queries plus two pilot queries, 67 total, with zero unknowns. Its test record has 75 methods; the current suite has 82, including seven additional numeric-input and whole-run-deadline regressions. A local Windows run executes 81 and explicitly skips the unavailable solver test; it does not replace the retained POSIX measurements or constitute a full seven-stage reproduction.
+The retained full result contains 33,792 dependency graphs and 2,129,920 candidate event sets; 3,072 graphs are safe and 30,720 unsafe graphs have oracle-checked minimum witnesses. The retained regression set contains 256 variants (75 safe, 181 unsafe). Fallback tests cover 255 formulas and 2,040 assignments plus 92 fixed-candidate formulas. Scaling has 45 base inputs and 180 policy report rows, with at most 5,599 events. There are 720 byte-recovery images and 3,765 unreachable occupied-slot observations. The retained full run has 65 evaluation SMT queries plus two pilot queries, 67 total, with zero unknowns. Its test record has 75 methods. Seven numeric-input/deadline regressions formed the preceding 82-method suite; three new slot-frontier methods bring the current source inventory to 85. The prior Windows run executed 81 and skipped the unavailable solver test. Only the three new methods have been run on both original and prepared slot scans; neither record replaces retained POSIX measurements or constitutes a fresh seven-stage reproduction.
 
 `check_scientific_invariants.py` checks exact JSON paths and cross-checks primary row counts, decisions, minimum-witness flags, certificate acceptance and byte arithmetic. It does not accept a matching number found elsewhere in a JSON tree. Assertions are ordinary executable checks, not proof-assistant verification.
 
