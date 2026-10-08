@@ -119,8 +119,8 @@ new solver experiments or actual unavailable-library campaign runs.
 
 ## Measurement and manuscript preservation
 
-The 75-method current suite includes 20 added directed/contract methods relative
-to the supplied 55-method suite. The full seven-stage campaign was actually
+The retained 75-method suite includes 20 directed/contract methods relative
+to the 55-method suite. The full seven-stage campaign was actually
 rerun on repaired code in a clean separate tree, followed by aggregation and the
 POSIX illustration. All 17 primary result files matched retained logical values
 when only declared host fields were normalized. Inputs, implementation, scripts
@@ -129,12 +129,6 @@ record and derived test counts were updated to the fresh run. Other primary
 measurement records and `paper/measurements.tex` were retained, not replaced by
 the new timings. See `reproduction-check.json` and `reproduction.md`.
 
-All existing table bodies and the three TikZ/PGFPlots figure environments remain
-byte-identical to the supplied manuscript. Publisher class, bibliography style,
-bibliography and the author JSON are unchanged. Only targeted narrative,
-contract/proof wording and supporting regression explanation were edited.
-The four null author slots remain metadata to be resolved by the responsible
-author, who determines real author count and information. The builder no longer
-forces exactly six people, but the supplied slots and PDF placeholders remain
-synchronized until that decision. Missing metadata or approval is not classified
-as a scientific defect, and no identity or consent is invented. Scientific scope limitations are retained.
+The current 88-method suite passes on Windows with Python 3.12 and Z3 available.
+It includes directed slot-frontier and noncanonical-manifest recovery checks;
+this unit run does not replace the retained campaign measurements.

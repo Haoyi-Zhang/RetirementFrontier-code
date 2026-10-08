@@ -193,7 +193,7 @@ def _recover_root(image: dict[str, Any], root: dict[str, Any]) -> dict[str, Any]
     manifest_bytes = _read_ref(image, root["manifest_ref"], "manifest")
     try:
         namespace = strict_json_loads(manifest_bytes)
-    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+    except ValueError as exc:
         raise RecoveryError("manifest bytes are not canonical JSON") from exc
     if canonical_json_bytes(namespace) != manifest_bytes:
         raise RecoveryError("manifest JSON is not canonical")
