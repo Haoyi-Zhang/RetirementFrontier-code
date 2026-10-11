@@ -38,6 +38,7 @@ jobs:
             set -euo pipefail
             python -B .github/scripts/check_repository.py 2>&1 | tee "$RUNNER_TEMP/retirementfrontier-scientific/source-integrity.log"
             python -B scripts/check_targeted.py 2>&1 | tee "$RUNNER_TEMP/retirementfrontier-scientific/targeted.log"
+            python -B scripts/run_tests.py --pattern test_scientific_invariants.py -v 2>&1 | tee "$RUNNER_TEMP/retirementfrontier-scientific/result-consistency-tests.log"
             python -B scripts/reproduce_portable.py --require-smt 2>&1 | tee "$RUNNER_TEMP/retirementfrontier-scientific/campaign.log"
             python -B scripts/aggregate.py 2>&1 | tee "$RUNNER_TEMP/retirementfrontier-scientific/aggregate.log"
             python -B scripts/run_posix_smoke.py 2>&1 | tee "$RUNNER_TEMP/retirementfrontier-scientific/posix.log"
