@@ -68,13 +68,11 @@ The supplied full result contains 33,792 dependency graphs and 2,129,920 candida
 
 `check_scientific_invariants.py` checks exact JSON paths and cross-checks primary row counts, decisions, minimum-witness flags, certificate acceptance and byte arithmetic. It does not accept a matching number found elsewhere in a JSON tree. Assertions are ordinary executable checks, not proof-assistant verification.
 
-A separate local Windows API check re-enumerates the census, retained variants,
-fallback assignments, and 92 fixed-candidate minima without a disagreement. It
-regenerates 144 physical policy traces and checks 720 recovered images against
-the selected root's specification bytes, multiplicities, repeated recovery, and
-quiescent reclamation. The specification-byte comparison is additional to the
-historical timed recovery path. No SMT query or POSIX fixture runs in this check;
-these supplementary observations are separate from the Ubuntu primary campaign.
+The Ubuntu primary campaign checks specification bytes, multiplicities,
+repeated recovery and quiescent reclamation after each timed recovery call.
+The recovery-subclass results separately retain 45 full-length traces and 765
+local image-file roundtrips from the same Linux host; these serialization checks
+do not exercise filesystem crash persistence.
 
 The test count must agree between the primary runner output and its summary,
 with the retained 75-method suite as a lower bound. New regressions need not
