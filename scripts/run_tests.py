@@ -22,6 +22,7 @@ TESTS = ROOT / "tests"
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("-v", "--verbose", action="store_true")
+    parser.add_argument("--pattern", default="test*.py", help="unittest discovery filename pattern")
     parser.add_argument("--smoke", action="store_true", help="verify clean-root import setup without running discovery")
     args = parser.parse_args()
     sys.path.insert(0, str(SRC))
@@ -29,7 +30,7 @@ def main() -> int:
         __import__("model")
         print("clean-root import smoke test passed")
         return 0
-    suite = unittest.defaultTestLoader.discover(str(TESTS), pattern="test*.py")
+    suite = unittest.defaultTestLoader.discover(str(TESTS), pattern=args.pattern)
     result = unittest.TextTestRunner(verbosity=2 if args.verbose else 1).run(suite)
     return 0 if result.wasSuccessful() else 1
 

@@ -6,7 +6,7 @@ The written arguments in `theorems.md` assume a finite serial trace, atomic reco
 
 Last-user aggregation is a maximum over the totally ordered serial roots. It is not an arbitrary-poset antichain compression theorem. Pairwise interference is aggregated into one threshold per destructive writer. Closures and same-slot scans can still be quadratic. Minimum negative witnesses use all relevant root/writer pairs, not just the maximum root.
 
-The fallback reduction has unbounded candidate roots and explicitly encoded content/identifiers. The concrete implementation admits bounded-width identifiers and SHA-256 references. Fixed candidate count yields a separate exact enumeration algorithm. A finite digest space is not used to justify an unbounded hardness theorem.
+The fallback reduction has arbitrary unbounded candidate roots and explicitly encoded content/identifiers. It deliberately fails publication P. Publication-valid traces admit a separate polynomial deletion decision with a greatest violating witness, even with unbounded candidates. Fixed candidate count yields exact enumeration with minimum-cardinality witnesses. The concrete implementation admits bounded-width identifiers and SHA-256 references. A finite digest space is not used to justify an unbounded hardness theorem.
 
 ## What programs check
 
@@ -16,7 +16,7 @@ The release validator checks precise primary rows and summaries. A passing valid
 
 ## What the POSIX illustration does not establish
 
-The file helper completes write, flush, file fsync, rename and directory fsync before any injected termination. Its root is selected by a CURRENT file, not by scanning for the greatest durable root. No crash inside an individual helper, physical power loss, firmware behavior, block tearing or certificate consumption is tested. Eleven observations include two unchanged initial-state controls, two normal completions, and seven actual injected process terminations; the two stale-generation failures occur in the unsafe ordering. This is an illustration of a reuse bug, not a refinement proof or a production storage implementation.
+The file helper completes write, flush, file fsync, rename and directory fsync before any injected termination. Its root is selected by a CURRENT file, not by scanning prepared root files. The completed-helper projection in `selector-correspondence.md` treats prepared files as manifests and CURRENT changes as logical ROOT publications, proving selector/byte agreement on those fixed prefixes. No crash inside an individual helper, physical power loss, firmware behavior, block tearing or certificate consumption is tested. Eleven retained observations include two unchanged initial-state controls, two normal completions, and seven actual injected process terminations; the two stale-generation failures occur in the unsafe ordering. Windows validation checks abstract projection outcomes without running or simulating those syscalls. This is not a general filesystem refinement or a production storage implementation.
 
 ## Empirical scope
 
@@ -30,8 +30,14 @@ The public-byte set is narrow and intentionally unchanged across versions. Repor
 separate online medium or medium-backed read API. The harness admits the emitted
 trace and independently materializes chosen cuts, then recovery reads the image.
 The small-domain oracle compares recovered bytes with ghost expectations.
-The separate 720-image campaign checks recovery success and repeatability,
-not a fresh oracle comparison of every recovered namespace.
+The retained 720-image campaign checks recovery success and repeatability,
+not a fresh oracle comparison of every recovered namespace. Its old proper-cut
+sampler took only the first fifteen roots after the empty cut. At 512 operations
+this reaches prefix 60 with batch-four commits, or prefix 15 with per-operation
+commits; full-image controls still reach the end. New full-history sampling uses
+root and event rank strata, records exact cut IDs, and checks specification bytes.
+Separate results in `results/recovery-subclasses/` do not overwrite retained
+recovery timings or claim real crash persistence.
 Whole-trace binding admission checks later allocations as well as earlier ones.
 Neither offline reconstruction nor the separate POSIX illustration establishes
 an online implementation that is absent from this artifact.

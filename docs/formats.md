@@ -145,3 +145,10 @@ Z3 `unknown` answer is returned as `status=unknown,safe=null`. Full reproduction
 preflights the capability and fails before launching the campaign when absent;
 core mode explicitly omits SMT and records the omission. Neither a missing
 library nor an omitted query is recorded as a successful or unknown SMT query.
+
+`fallback-publication` returns safe (0) or unsafe (1) only after checking P on
+every root reference. An admitted trace failing P returns not-applicable (2),
+safe=null, with publication failures; this is neither malformed nor a general
+fallback safety verdict. A violating `bad_cut` is the greatest fault cut for
+the reported acknowledgement, `witness_kind=greatest-not-minimum`, and
+`minimum_bad_cut` is always null. The checker does not use a choice budget.

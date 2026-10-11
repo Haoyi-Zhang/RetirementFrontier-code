@@ -8,6 +8,9 @@ import json, os, pathlib, shutil, subprocess, sys, tempfile
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'src'))
 from posix_harness import CRASH_EXIT, init_store, recover, update
+from selector_bridge import boundary_trace, boundary_cut
+from model import admit_trace
+from medium import materialize, recover as abstract_recover
 OUT=ROOT/'results'/'posix-smoke.json'
 
 def boundary_count(protocol: str) -> int:
@@ -20,6 +23,7 @@ def main() -> int:
     with tempfile.TemporaryDirectory() as base_td:
         base=pathlib.Path(base_td)/'base'; init_store(base)
         for protocol in ('unsafe','ordered'):
+            model=admit_trace(boundary_trace(protocol))
             n=boundary_count(protocol)
             for after in range(0,n+2):
                 with tempfile.TemporaryDirectory() as td:
@@ -32,16 +36,23 @@ def main() -> int:
                                           stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
                         rc=cp.returncode
                     ok,value=recover(d)
+                    cut=boundary_cut(protocol,after)
+                    projected=abstract_recover(materialize(model,cut))
+                    agrees=bool(projected['ok'])==ok
+                    if ok:
+                        agrees=agrees and projected['objects_hex']=={'object':value.encode('ascii').hex()}
                     rows.append({'protocol':protocol,'crash_after_boundary':after,
+                                 'abstract_cut':cut,'selector_bridge_agrees':agrees,
                                  'child_returncode':rc,'observation':('initial-state' if after==0 else 'normal-completion' if rc==0 else 'injected-termination' if rc==CRASH_EXIT else 'unexpected-exit'),'recoverable':ok,'recovered':value})
     payload={'schema':1,
-             'scope':'process termination after complete atomic-file replacement helpers; explicit CURRENT selector, not strict greatest-root refinement or power-loss testing',
+             'scope':'completed-helper process prefixes; prepared roots project to manifests and CURRENT updates to retained logical ROOTs; no in-helper or power-loss refinement',
              'rows':rows,
              'ordered_failures':sum(not r['recoverable'] for r in rows if r['protocol']=='ordered'),
              'unsafe_failures':sum(not r['recoverable'] for r in rows if r['protocol']=='unsafe')}
     OUT.write_text(json.dumps(payload,indent=2,sort_keys=True)+'\n',encoding='utf-8')
     print(json.dumps({k:v for k,v in payload.items() if k!='rows'},sort_keys=True))
     if any(r['observation']=='unexpected-exit' for r in rows): return 1
+    if any(not r['selector_bridge_agrees'] for r in rows): return 1
     if payload['ordered_failures'] != 0: return 1
     if payload['unsafe_failures'] < 1: return 1
     return 0

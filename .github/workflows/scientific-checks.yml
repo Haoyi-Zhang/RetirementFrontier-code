@@ -41,6 +41,8 @@ jobs:
             python -B scripts/reproduce_portable.py --require-smt 2>&1 | tee "$RUNNER_TEMP/retirementfrontier-scientific/campaign.log"
             python -B scripts/aggregate.py 2>&1 | tee "$RUNNER_TEMP/retirementfrontier-scientific/aggregate.log"
             python -B scripts/run_posix_smoke.py 2>&1 | tee "$RUNNER_TEMP/retirementfrontier-scientific/posix.log"
+            python -B scripts/run_tests.py --pattern test_recovery_subclasses.py -v 2>&1 | tee "$RUNNER_TEMP/retirementfrontier-scientific/subclasses-tests.log"
+            python -B scripts/check_recovery_subclasses.py 2>&1 | tee "$RUNNER_TEMP/retirementfrontier-scientific/subclasses.log"
             python -B scripts/validate_release.py 2>&1 | tee "$RUNNER_TEMP/retirementfrontier-scientific/validation.log"
           '
       - name: Upload raw outputs even after a failure

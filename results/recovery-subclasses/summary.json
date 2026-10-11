@@ -1,0 +1,37 @@
+{
+  "full_history": {
+    "all_four_prefix_quarters_covered": true,
+    "disagreements": 0,
+    "images": 765,
+    "legacy_max_sampled_prefix": 60,
+    "minimum_stratified_max_prefix": 512,
+    "publication_fallback_safe_traces": 45,
+    "storage_scope": "local image-file roundtrips, no crash or fsync durability claim",
+    "traces": 45
+  },
+  "late_cut_regression": {
+    "fault_scope": "injected image missing manifest at selected prefix >=400",
+    "legacy_late_fault_detections": 0,
+    "legacy_max_prefix": 60,
+    "stratified_late_fault_detections": 4,
+    "stratified_max_prefix": 512
+  },
+  "platform": "Windows-11-10.0.28000-SP0",
+  "publication_fallback": {
+    "acknowledgement_checks": 19200,
+    "disagreements": 0,
+    "graphs_examined": 33792,
+    "legal_images": 64458,
+    "publication_valid_graphs": 6528,
+    "unsafe_checks": 9984
+  },
+  "python": "3.12.14",
+  "schema": 1,
+  "selector_projection": {
+    "abstract_observations": 11,
+    "ordered_failures": 0,
+    "posix_syscalls_executed": false,
+    "unsafe_failures": 2
+  },
+  "wall_seconds": 358.53130030003376
+}

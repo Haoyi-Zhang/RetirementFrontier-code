@@ -46,6 +46,7 @@ from fallback import (  # noqa: E402
 from medium import erase_slots, materialize, recover  # noqa: E402
 from model import admit_trace, save_json  # noqa: E402
 from oracle import exhaustive_model  # noqa: E402
+from sampling import sample_cuts as _sample_cuts, cut_metadata  # noqa: E402
 from solver import SolverUnavailable, solve_model  # noqa: E402
 from verifier import verify_certificate  # noqa: E402
 
@@ -382,32 +383,6 @@ def run_fallback() -> dict[str, Any]:
     return result
 
 
-def _sample_cuts(model, count: int, seed: int) -> list[list[int]]:
-    rng = random.Random(seed)
-    full = set(range(model.n))
-    cuts: list[list[int]] = []
-    seen: set[tuple[int, ...]] = set()
-    candidates: list[list[int]] = [[]]
-    candidates += [[root] for root in model.roots]
-    candidates += [[i] for i in range(0, model.n, max(1, model.n // max(1, count)))]
-    attempts = 0
-    while len(candidates) < count * 8 and attempts < count * 20:
-        attempts += 1
-        width = 1 + rng.randrange(min(8, max(1, model.n)))
-        candidates.append([rng.randrange(model.n) for _ in range(width)])
-    for seeds in candidates:
-        cut = tuple(sorted(model.closure_ids(seeds)))
-        if set(cut) == full or cut in seen:
-            continue
-        seen.add(cut)
-        cuts.append(list(cut))
-        if len(cuts) == count:
-            break
-    if len(cuts) != count:
-        raise RuntimeError(f"could not construct {count} distinct legal cuts")
-    return cuts
-
-
 def _expected_reference_counts(model, root_event: int | None) -> dict[str, int]:
     if root_event is None:
         return {}
@@ -441,6 +416,12 @@ def _timed_recovery(model, cut: list[int], repeats: int = 7) -> dict[str, Any]:
         raise AssertionError("read-only recovery was not idempotent")
 
     root_event = first["root_event"]
+    cut_set = set(cut)
+    selected = max((r for r in model.roots if r in cut_set), default=None)
+    expected_objects = {} if selected is None else model.events[selected]["objects_hex"]
+    expected_prefix = 0 if selected is None else model.events[selected]["prefix"]
+    if root_event != selected or first["prefix"] != expected_prefix or first["objects_hex"] != expected_objects:
+        raise AssertionError("recovered selector, prefix or bytes differ from the selected specification root")
     expected_counts = _expected_reference_counts(model, root_event)
     if first["reference_counts"] != expected_counts:
         raise AssertionError("recovered reference multiplicities differ from the selected manifest")
@@ -455,6 +436,7 @@ def _timed_recovery(model, cut: list[int], repeats: int = 7) -> dict[str, Any]:
         raise AssertionError("erasing unreachable occupied slots changed strict recovery")
 
     return {
+        **cut_metadata(model, cut),
         "events_in_cut": len(set(cut)),
         "prefix": int(first["prefix"]),
         "root_event": root_event,
@@ -465,6 +447,7 @@ def _timed_recovery(model, cut: list[int], repeats: int = 7) -> dict[str, Any]:
         "idempotent_recovery_checked": True,
         "reference_multiplicity_checked": True,
         "quiescent_reclamation_checked": True,
+        "specification_bytes_checked": True,
         "recovery_ns_median": int(statistics.median(values)),
         "recovery_ns_min": min(values),
         "recovery_ns_max": max(values),

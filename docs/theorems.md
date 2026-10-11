@@ -115,6 +115,46 @@ For every candidate root choose one of these fault literals. A chosen positive w
 
 The implementation enforces an explicit choice budget. Exhausting it returns `unknown`, not `safe`; no partial search is advertised as proving minimum cardinality. The budget is shared across acknowledgement choice products. On exhaustion, minimum_bad_cut is null; an optional bad_cut incumbent has no minimality claim. This checker shares input-admission helpers with the strict analyzer and is not the separate certificate consumer.
 
+## Publication-valid fallback without a candidate bound
+
+**Theorem (publication-valid fallback).** Assume full-trace admission and P:
+each reference of every ROOT r has a unique allocation in D(r). Let W(r) be all
+later writers to any slot holding an allocation required by r, including its
+manifest. For a positive promised prefix p, start with all events and repeatedly
+remove (a) an event with a removed dependency or (b) a ROOT reaching p with no
+active writer in W(r). Call the remaining set J_p. It is the unique greatest
+legal cut with no valid ROOT reaching p. An acknowledgement (issued,p,A) is
+violable iff A is a subset of J_p. No D or A condition is assumed in this theorem.
+
+**Proof.** P makes a present r force every required allocation. Its validity is
+therefore equivalent to the absence of all W(r); any later selected same-slot
+writer destroys the unique required incarnation. Cuts lacking a valid qualifying
+root thus satisfy r implies OR W(r), in addition to dependency implications.
+For any such cut I, induction over removals maintains I inside the active set:
+a removed dependency forbids its successor by closure, and a root without any
+active destructive writer cannot belong to I. At termination every remaining
+dependency is present and every qualifying remaining root has a destructive
+writer. Hence J_p itself satisfies the constraints and contains every solution.
+It includes all acknowledgement anchors exactly when it is a compatible violating
+cut. This proves both directions, including empty/no-candidate cases. QED.
+
+Each implication has at most one negative Boolean literal. This is the reason
+union preserves solutions; arbitrary fallback has additional allocation-absence
+literals and need not have that property. The general SAT reduction above fails P
+and does not classify this subclass.
+
+With successor lists, reverse writer/root incidences and active-writer counters,
+each event, dependency edge and incidence is processed at most once. After
+admission, checking P and explicit incidence construction, the worklist costs
+O(n+m+H_p) per acknowledgement, where H_p sums |W(r)| over qualifying roots.
+Enumerating incidences and the current bitset admission/closures are polynomial
+but not claimed linear. Multiple promises can be checked separately. This is an
+unbounded-candidate polynomial decision, not a minimum-cut algorithm: J_p is the
+greatest witness. `publication_fallback_model` returns `not-applicable` with
+safe=null if P fails; it does not treat an admitted out-of-subclass input as a
+format error or general safety verdict. `fixed_candidate_model` retains the
+minimum-cardinality objective for its separately bounded domain.
+
 ## 9. Exact last-user aggregation and its cost boundary
 
 ROOT identifiers are totally ordered by the serial event order; this is not a theorem about maximal antichains in an arbitrary persistence poset. For an allocation a, let L(a) be its greatest referring ROOT or -1. For a writer w, let T(w) be the maximum L(a) over earlier allocations to w's slot and let F(w) be the greatest ROOT in the dependency closure of w, using -1 when absent. The pairwise retirement obligations require F(w)>r for every referring ROOT r of every earlier allocation threatened by w. Their conjunction is exactly F(w)>T(w) when T(w)>=0. When T(w)=-1 there is no retirement obligation.

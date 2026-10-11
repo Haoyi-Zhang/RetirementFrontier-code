@@ -2,11 +2,84 @@
 from __future__ import annotations
 
 from itertools import product
+from collections import deque
 import time
 from typing import Any, Iterable
 
 from medium import materialize, recover
 from model import Model, admit_trace, canonical_manifest, make_ref, ref_key
+
+
+def publication_fallback_model(model: Model) -> dict[str, Any]:
+    """Exact acknowledgement decision on the publication-valid subclass.
+
+    Return not-applicable (not malformed or unsafe) if P does not hold. The
+    deletion worklist computes the greatest violating cut for each promise;
+    it does NOT optimize event cardinality. Admission/closure construction and
+    explicit root/writer incidence enumeration are separate preprocessing.
+    """
+    start = time.process_time()
+    failures = []
+    killers: dict[int, set[int]] = {}
+    for r in model.roots:
+        destructive: set[int] = set()
+        for ref in model.refs_by_root[r]:
+            a = model.data_by_key.get(ref_key(ref))
+            if a is None or not (model.closures[r] & (1 << a)):
+                failures.append({"root": r, "allocation": a})
+                continue
+            destructive.update(w for w in model.writers_by_slot[int(ref["slot"])] if w > a)
+        killers[r] = destructive
+    if failures:
+        return {"status": "not-applicable", "safe": None,
+                "reason": "publication condition P fails", "publication_failures": failures,
+                "cpu_seconds": time.process_time() - start}
+
+    successors: list[list[int]] = [[] for _ in model.events]
+    for event, deps in enumerate(model.deps):
+        for dep in deps:
+            successors[dep].append(event)
+    rows = []
+    for ack_index, ack in enumerate(model.acknowledgements):
+        if ack["prefix"] == 0:
+            continue
+        candidates = [r for r in model.roots if model.events[r]["prefix"] >= ack["prefix"]]
+        active = [True] * model.n
+        remaining = {r: len(killers[r]) for r in candidates}
+        affected: list[list[int]] = [[] for _ in model.events]
+        for r in candidates:
+            for writer in killers[r]:
+                affected[writer].append(r)
+        pending = deque(r for r in candidates if remaining[r] == 0)
+        while pending:
+            event = pending.popleft()
+            if not active[event]:
+                continue
+            active[event] = False
+            pending.extend(successors[event])
+            for r in affected[event]:
+                remaining[r] -= 1
+                if remaining[r] == 0 and active[r]:
+                    pending.append(r)
+        excluded = [a for a in ack["anchors"] if not active[a]]
+        cut = [i for i, present in enumerate(active) if present]
+        rows.append({"ack_index": ack_index, "greatest_fault_cut": cut,
+                     "excluded_anchors": excluded})
+        if not excluded:
+            outcome = recover(materialize(model, cut), fallback=True)
+            if not outcome.get("ok") or outcome["prefix"] >= ack["prefix"]:
+                raise AssertionError("publication fallback witness disagrees with byte recovery")
+            return {"status": "unsafe", "safe": False, "ack_index": ack_index,
+                    "bad_cut": cut, "witness_kind": "greatest-not-minimum",
+                    "minimum_bad_cut": None, "acknowledgement_checks": rows,
+                    "cpu_seconds": time.process_time() - start}
+    return {"status": "safe", "safe": True, "bad_cut": None,
+            "acknowledgement_checks": rows, "minimum_bad_cut": None,
+            "cpu_seconds": time.process_time() - start}
+
+
+def publication_fallback_trace(trace: dict[str, Any]) -> dict[str, Any]:
+    return publication_fallback_model(admit_trace(trace))
 
 
 def fixed_candidate_model(model: Model, max_choices: int = 1_000_000) -> dict[str, Any]:

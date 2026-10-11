@@ -13,7 +13,7 @@ import sys
 from typing import Any
 
 from checker import analyze_model
-from fallback import fixed_candidate_model
+from fallback import fixed_candidate_model, publication_fallback_model
 from medium import materialize, recover
 from model import AdmissionError, admit_trace, load_trace, save_json
 from verifier import TraceFormatError, VerificationError, verify_certificate
@@ -58,6 +58,9 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("trace")
     p.add_argument("--max-choices", type=int, default=1_000_000)
 
+    p = sub.add_parser("fallback-publication")
+    p.add_argument("trace")
+
     args = parser.parse_args(argv)
     try:
         if args.command == "certify":
@@ -88,6 +91,10 @@ def main(argv: list[str] | None = None) -> int:
             return 0 if result.get("ok") else 2 if status == "malformed" else 1
         if args.command == "fallback":
             result = fixed_candidate_model(admit_trace(load_trace(args.trace)), max_choices=args.max_choices)
+            _print(result)
+            return 0 if result.get("safe") is True else 1 if result.get("safe") is False else 2
+        if args.command == "fallback-publication":
+            result = publication_fallback_model(admit_trace(load_trace(args.trace)))
             _print(result)
             return 0 if result.get("safe") is True else 1 if result.get("safe") is False else 2
         raise AssertionError("unreachable")

@@ -6,7 +6,7 @@ Executable trace-level crash certificates for deduplicating stores, accompanying
 
 The finite model has serial events, atomic byte-bearing DATA records (including whole manifests), FREE records, immutable retained ROOTs, unique physical incarnations, and an explicit backward dependency DAG. A crash cut is downward closed. Strict recovery selects the greatest durable ROOT. Acknowledgements promise a recoverable operation prefix, not indefinite retention of overwritten object versions.
 
-The mathematical results characterize this model, not arbitrary programs or hardware. The byte-bearing model, exact oracle, separate certificate consumer, optional SMT encoding, and POSIX illustration have distinct trust boundaries. The POSIX example uses a current-root selector and whole-file replacement helpers; it does not refine the greatest-root theorem and is not a power-loss experiment.
+The mathematical results characterize this model, not arbitrary programs or hardware. The byte-bearing model, exact oracle, separate certificate consumer, optional SMT encoding, and POSIX illustration have distinct trust boundaries. The POSIX example uses a current-root selector and whole-file replacement helpers. An exact completed-helper projection maps prepared root files to manifests and selector updates to ROOT publications; it is not an all-state filesystem refinement or a power-loss experiment. See `docs/selector-correspondence.md`.
 
 ## Requirements
 
@@ -53,7 +53,7 @@ python -B -m unittest discover -s tests -p test_slot_frontier.py -v
 
 This command needs only current included sources/fixtures and the standard
 library. Frozen 75-method campaign records and the preceding 82-method suite
-remain historical evidence; the current discovery contains 88 methods. All 88
+remain historical evidence; the preceding discovery contained 88 methods. All 88
 pass in the local Windows run with Z3 available, without rerunning the full
 campaign. Slot checks compare a dense pair
 definition, the unchanged pair baseline and bounded concrete all-cut recovery.
@@ -111,6 +111,49 @@ Small-domain recovery compares bytes with the offline oracle. The 720-image
 campaign checks recovery success, multiplicity, repeated recovery and
 reclamation; it does not separately compare every returned namespace with
 the oracle's expected bytes.
+
+## Full-history recovery and publication-valid fallback
+
+```sh
+python -B scripts/run_tests.py --pattern test_recovery_subclasses.py -v
+python -B scripts/check_recovery_subclasses.py
+python -B src/cli.py fallback-publication inputs/pilot-trace.json
+```
+
+The publication-valid checker first checks P, then uses a deletion worklist to
+decide universal acknowledgement safety for an unbounded candidate set. Failure
+of P returns `not-applicable`, safe=null, exit code 2; general fallback still uses
+the separate fixed-candidate checker. The polynomial checker returns a greatest
+violating cut, never a minimum-cardinality claim. Its proof is in
+`docs/theorems.md` and its graph/byte-oracle rows are in
+`results/recovery-subclasses/publication-fallback.jsonl.gz`.
+
+The recovery sampler now splits its nonempty budget between evenly spaced root
+and event issue ranks over the complete history. It excludes the separately
+measured full cut and fills duplicate closures explicitly. New rows record exact
+cut event identifiers, selected prefix, and maximum event. `reproduce.py` also
+compares the selected root, prefix and recovered bytes with the specification.
+The prior 16-cut sampler exhausted its budget at the empty cut and first fifteen
+roots, reaching prefix 60 at batch four or 15 at batch one in a 512-operation
+history. That bias limits the retained 720-image campaign, whose full-image
+controls did still reach the end. Retained timing/occupancy records are unchanged.
+
+The separate local check examines 512-operation histories for all three workload
+families, five seeds and three physical policies. It stores real local image-file
+roundtrips and abstract recovery checks in `results/recovery-subclasses/`, not new
+POSIX persistence observations. The directed regression erases a selected
+manifest only at prefixes >=400 to test sampling sensitivity; this is an injected
+image fault, not a counterexample to the unmodified safe generated trace.
+
+The executed local check examines 33,792 graphs, retaining 6,528 satisfying P,
+and materializes 64,458 legal fallback images. Its 19,200 acknowledgement checks
+(9,984 unsafe) match byte enumeration and the union defining the greatest fault
+cut. The 45 full-length histories pass all original acknowledgement checks and
+produce 765 verified local image-file roundtrips. All four prefix quarters are
+represented, and each proper-cut set reaches prefix 512. The directed late fault
+is missed by old cuts and detected in four stratified cuts. Ten focused unit
+methods pass, with no skips. `summary.json`, primary JSONL rows and
+`unit-tests.json` retain these observations separately from historical campaigns.
 
 ## Directed contract checks
 
