@@ -31,9 +31,9 @@
   },
   "cases": 256,
   "consumer_checks": 75,
-  "cpu_seconds": 2.5201078299999997,
+  "cpu_seconds": 3.9882681040000003,
   "disagreements": 0,
-  "max_rss_kib": 117000,
+  "max_rss_kib": 54652,
   "minimum_witness_checks": 181,
   "minimum_witness_size_histogram": {
     "0": 64,
@@ -48,5 +48,5 @@
   "solver_queries": 32,
   "stage": "heldout",
   "unsafe": 181,
-  "wall_seconds": 2.5473265539999375
+  "wall_seconds": 4.059489826000004
 }

@@ -1,27 +1,22 @@
 # Reproduction and observation provenance
 
-The supplied primary census, variant, fallback, scaling and public-byte records
-are retained. Their byte costs, identifiers, decisions, minima, recovery counts,
-SMT counts and host measurements are not relabeled as fresh measurements. The
-original campaign record is `results/measurement-campaign.json`. Its old test
-count describes that measurement run, not the current suite.
+The supplied primary results come from a completed seven-stage run on Ubuntu
+24.04 with Python 3.12 and Z3. `results/campaign-run.json` records each executed
+stage; `results/pilots/unit-tests.json` records 103 passing methods and no skips.
+The census, retained variants, fallback, scaling, public-byte rows, and derived
+summary belong to that same run.
 
-A fresh seven-stage full-mode run of the repaired code completed successfully
-in a separately copied clean tree. Its actual record is
-`results/campaign-run.json`; its 75-method unit-test result replaces the affected
-`results/pilots/unit-tests.json`. Reaggregation updates the test count in the
-summary without replacing the retained measurement families. This mixed origin
-is intentional and explicit. The repaired parsers perform additional complete-
-trace work, so inherited timing samples must not be claimed as fresh performance
-measurements of the repaired implementation.
+Recovery uses deterministic full-history stratification. All 720 primary images
+agree on selected root, operation prefix, and specification object bytes, and
+contain 5,382 unreachable-slot observations. Seven-call recovery medians have
+median 3,965,117 ns, with range 2,925--13,837,182 ns. Scaling peak process RSS
+is 162,268 KiB. These are host observations, not device latency measurements.
+Specification comparisons occur after the timed calls.
 
-Comparison of all 17 primary result files found identical logical content after
-normalizing only the validator's listed host fields and unittest elapsed time.
-The input, source, script and test directories matched byte for byte. The fresh
-POSIX illustration still reports 11 observations, zero ordered failures and two
-unsafe failures. Counts in the manuscript's Tables 3–7 are unchanged; the cost
-formula is clarified rather than changed. Exact comparison details are retained
-in `reproduction-check.json`. These are same-project executable checks.
+The separate POSIX fixture records eleven completed-helper observations, zero
+ordered failures, two expected unsafe failures, and agreement with the abstract
+selector projection. Publication-valid fallback and 512-operation local-file
+campaigns have their own primary rows under `results/recovery-subclasses/`.
 
 Run from the repository root:
 
@@ -31,6 +26,7 @@ python scripts/run_tests.py -v
 python scripts/reproduce_portable.py --require-smt
 python scripts/aggregate.py
 python scripts/run_posix_smoke.py
+python scripts/check_recovery_subclasses.py
 python scripts/validate_release.py
 ```
 

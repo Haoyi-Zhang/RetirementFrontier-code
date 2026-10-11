@@ -128,7 +128,7 @@
         "minimum_bad_cut": [
           0
         ],
-        "producer_cpu_seconds": 1.249799999991641e-05,
+        "producer_cpu_seconds": 0.0,
         "certificate_bytes": 0
       },
       "fallback": {
@@ -136,7 +136,7 @@
         "safe": true,
         "minimum_bad_cut": null,
         "choices_explored": 2,
-        "cpu_seconds": 1.4941999999962263e-05
+        "cpu_seconds": 0.0009880460000000063
       },
       "oracle_fallback": {
         "safe": true,
@@ -145,7 +145,7 @@
         "legal_cuts": 4,
         "bad_cuts": 0,
         "minimum_bad_cut": null,
-        "oracle_cpu_seconds": 0.0001603169999999654
+        "oracle_cpu_seconds": 0.0
       },
       "cuts": [
         {
@@ -501,7 +501,7 @@
           0,
           1
         ],
-        "producer_cpu_seconds": 1.0375000000006906e-05,
+        "producer_cpu_seconds": 0.0,
         "certificate_bytes": 0
       },
       "fallback": {
@@ -509,7 +509,7 @@
         "safe": true,
         "minimum_bad_cut": null,
         "choices_explored": 3,
-        "cpu_seconds": 1.0175000000001155e-05
+        "cpu_seconds": 0.0
       },
       "oracle_fallback": {
         "safe": true,
@@ -518,7 +518,7 @@
         "legal_cuts": 6,
         "bad_cuts": 0,
         "minimum_bad_cut": null,
-        "oracle_cpu_seconds": 0.00026126599999998223
+        "oracle_cpu_seconds": 0.0
       },
       "cuts": [
         {
@@ -770,7 +770,7 @@
         "minimum_bad_cut": [
           0
         ],
-        "producer_cpu_seconds": 3.81600000010085e-06,
+        "producer_cpu_seconds": 0.0,
         "certificate_bytes": 0
       },
       "fallback": {
@@ -781,7 +781,7 @@
           0
         ],
         "choices_explored": 2,
-        "cpu_seconds": 2.234299999992473e-05
+        "cpu_seconds": 0.0
       },
       "oracle_fallback": {
         "safe": false,
@@ -792,7 +792,7 @@
         "minimum_bad_cut": [
           0
         ],
-        "oracle_cpu_seconds": 2.2352999999974976e-05
+        "oracle_cpu_seconds": 0.0
       },
       "cuts": [
         {
@@ -925,7 +925,7 @@
           0,
           1
         ],
-        "producer_cpu_seconds": 5.798000000001302e-06,
+        "producer_cpu_seconds": 0.0,
         "certificate_bytes": 0
       },
       "fallback": {
@@ -937,7 +937,7 @@
           1
         ],
         "choices_explored": 3,
-        "cpu_seconds": 6.723999999991292e-05
+        "cpu_seconds": 0.0
       },
       "oracle_fallback": {
         "safe": false,
@@ -949,7 +949,7 @@
           0,
           1
         ],
-        "oracle_cpu_seconds": 8.333299999996324e-05
+        "oracle_cpu_seconds": 0.0009926340000000061
       },
       "cuts": [
         {
@@ -1075,7 +1075,7 @@
         "frontier_obligations": 0,
         "certificate": null,
         "minimum_bad_cut": [],
-        "producer_cpu_seconds": 4.2270000000232955e-06,
+        "producer_cpu_seconds": 0.0,
         "certificate_bytes": 0
       },
       "fallback": {
@@ -1084,7 +1084,7 @@
         "ack_index": 1,
         "minimum_bad_cut": [],
         "choices_explored": 0,
-        "cpu_seconds": 2.6128999999985858e-05
+        "cpu_seconds": 0.0
       },
       "oracle_fallback": {
         "safe": false,
@@ -1093,7 +1093,7 @@
         "legal_cuts": 2,
         "bad_cuts": 2,
         "minimum_bad_cut": [],
-        "oracle_cpu_seconds": 1.740599999999759e-05
+        "oracle_cpu_seconds": 0.0
       },
       "cuts": [
         {
@@ -1141,7 +1141,7 @@
         "ack_index": 0,
         "minimum_bad_cut": [],
         "choices_explored": 0,
-        "cpu_seconds": 3.7449999999994432e-06
+        "cpu_seconds": 0.0
       },
       "budget_zero": {
         "status": "unsafe",
@@ -1149,7 +1149,7 @@
         "ack_index": 1,
         "minimum_bad_cut": [],
         "choices_explored": 0,
-        "cpu_seconds": 2.6439999999405828e-06
+        "cpu_seconds": 0.0
       },
       "reordered_budget_zero": {
         "status": "unsafe",
@@ -1157,7 +1157,7 @@
         "ack_index": 0,
         "minimum_bad_cut": [],
         "choices_explored": 0,
-        "cpu_seconds": 2.363000000005222e-06
+        "cpu_seconds": 0.0
       }
     },
     "mixed-multiple-acks": {
@@ -1240,7 +1240,7 @@
         "frontier_obligations": 0,
         "certificate": null,
         "minimum_bad_cut": [],
-        "producer_cpu_seconds": 5.246999999930502e-06,
+        "producer_cpu_seconds": 0.0,
         "certificate_bytes": 0
       },
       "fallback": {
@@ -1249,7 +1249,7 @@
         "ack_index": 0,
         "minimum_bad_cut": [],
         "choices_explored": 2,
-        "cpu_seconds": 1.6414000000075646e-05
+        "cpu_seconds": 0.0
       },
       "oracle_fallback": {
         "safe": false,
@@ -1258,7 +1258,7 @@
         "legal_cuts": 3,
         "bad_cuts": 3,
         "minimum_bad_cut": [],
-        "oracle_cpu_seconds": 6.366499999999053e-05
+        "oracle_cpu_seconds": 0.0010019619999999951
       },
       "cuts": [
         {
@@ -1331,7 +1331,7 @@
         "ack_index": 1,
         "minimum_bad_cut": [],
         "choices_explored": 2,
-        "cpu_seconds": 1.532299999995601e-05
+        "cpu_seconds": 0.0
       },
       "budget_zero": {
         "status": "unknown",
@@ -1341,7 +1341,7 @@
         "bad_cut": null,
         "bad_cut_ack_index": null,
         "choices_explored": 0,
-        "cpu_seconds": 2.6330000000296394e-06
+        "cpu_seconds": 0.0
       },
       "reordered_budget_zero": {
         "status": "unknown",
@@ -1353,7 +1353,7 @@
         ],
         "bad_cut_ack_index": 0,
         "choices_explored": 0,
-        "cpu_seconds": 4.306000000009469e-06
+        "cpu_seconds": 0.0
       }
     },
     "canonical-witnesses": {
@@ -1533,7 +1533,7 @@
           ]
         },
         "minimum_bad_cut": null,
-        "producer_cpu_seconds": 1.1446999999997765e-05,
+        "producer_cpu_seconds": 0.0,
         "certificate_bytes": 297
       },
       "fallback": {
@@ -1541,7 +1541,7 @@
         "safe": true,
         "minimum_bad_cut": null,
         "choices_explored": 4,
-        "cpu_seconds": 1.1557999999967095e-05
+        "cpu_seconds": 0.0
       },
       "oracle_fallback": {
         "safe": true,
@@ -1550,7 +1550,7 @@
         "legal_cuts": 16,
         "bad_cuts": 0,
         "minimum_bad_cut": null,
-        "oracle_cpu_seconds": 0.0009346330000000735
+        "oracle_cpu_seconds": 0.0009980150000000049
       },
       "cuts": [
         {

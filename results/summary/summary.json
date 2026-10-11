@@ -28,15 +28,15 @@
   },
   "fallback": {
     "assignments": 2040,
-    "cpu_seconds": 7.448892724,
+    "cpu_seconds": 11.684136876,
     "disagreements": 0,
     "fixed_candidate_formulas": 92,
     "fixed_candidate_oracle_checks": 92,
     "formulas": 255,
-    "max_rss_kib": 97584,
+    "max_rss_kib": 25512,
     "minimum_witness_checks": 92,
     "stage": "fallback",
-    "wall_seconds": 7.456318176999957
+    "wall_seconds": 11.685015916000012
   },
   "heldout": {
     "by_variant": {
@@ -92,12 +92,12 @@
   },
   "recovery": {
     "images": 720,
-    "max_ns": 10261317,
-    "median_ns": 2174653,
-    "min_ns": 1522,
+    "max_ns": 13837182,
+    "median_ns": 3965117,
+    "min_ns": 2925,
     "public_images": 153,
     "scaling_images": 567,
-    "unreachable_slots_total": 3765,
+    "unreachable_slots_total": 5382,
     "validation_checks": {
       "idempotence": 720,
       "json_roundtrip": 720,
@@ -138,7 +138,7 @@
     "unknown": 0
   },
   "tests": {
-    "methods": 75,
+    "methods": 103,
     "returncode": 0,
     "skipped": 0
   }

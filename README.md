@@ -10,7 +10,7 @@ The mathematical results characterize this model, not arbitrary programs or hard
 
 ## Requirements
 
-Core experiments use Python 3.10 or later and the standard library, on a POSIX host with `resource` and process support. The current reproduction used Python 3.13. Complete SMT comparisons additionally require a usable local Z3 C shared library, discoverable by `ctypes.util.find_library`, or a local `z3-solver` installation. No live network, model service, GPU, database service or private dataset is used by the campaign. TeX is unnecessary for this standalone repository.
+Core experiments use Python 3.10 or later and the standard library, on a POSIX host with `resource` and process support. The recorded reproduction used Ubuntu 24.04 and Python 3.12. Complete SMT comparisons additionally require a usable local Z3 C shared library, discoverable by `ctypes.util.find_library`, or a local `z3-solver` installation. The campaign uses included inputs; TeX is unnecessary for this standalone repository.
 
 ## Reproduce the evidence
 
@@ -35,7 +35,7 @@ python scripts/run_posix_smoke.py
 python scripts/validate_release.py
 ```
 
-This requests every non-SMT stage, records omitted SMT queries, and never calls an omission a successful solver check. The preceding 82-method standard-library validation executed 81 methods and explicitly skipped one solver-dependent method; that is retained evidence, not a fresh run of the enlarged suite. `--require-smt` fails before the campaign if the actual C API is unavailable. Query-budget exhaustion in the bounded fallback analyzer is `unknown`, not `safe`.
+This requests every non-SMT stage and records omitted solver queries and the solver-dependent unit-test skip. `--require-smt` fails before the campaign if the actual C API is unavailable. Query-budget exhaustion in the bounded fallback analyzer is `unknown`, not `safe`.
 
 ## Certificate interface
 
@@ -52,10 +52,7 @@ python -B -m unittest discover -s tests -p test_slot_frontier.py -v
 ```
 
 This command needs only current included sources/fixtures and the standard
-library. Frozen 75-method campaign records and the preceding 82-method suite
-remain historical evidence; the preceding discovery contained 88 methods. All 88
-pass in the local Windows run with Z3 available, without rerunning the full
-campaign. Slot checks compare a dense pair
+library. Slot checks compare a dense pair
 definition, the unchanged pair baseline and bounded concrete all-cut recovery.
 
 ```sh
@@ -67,7 +64,7 @@ The certificate can be removed after inspection. The consumer reparses the origi
 
 ## What to check
 
-The retained full result contains 33,792 dependency graphs and 2,129,920 candidate event sets; 3,072 graphs are safe and 30,720 unsafe graphs have oracle-checked minimum witnesses. The retained regression set contains 256 variants (75 safe, 181 unsafe). Fallback tests cover 255 formulas and 2,040 assignments plus 92 fixed-candidate formulas. Scaling has 45 base inputs and 180 policy report rows, with at most 5,599 events. There are 720 byte-recovery images and 3,765 unreachable occupied-slot observations. The retained full run has 65 evaluation SMT queries plus two pilot queries, 67 total, with zero unknowns. Its test record has 75 methods. The current 88-method suite also covers numeric/deadline boundaries, slot-frontier equivalence and strict/fallback/CLI recovery of noncanonical manifests. All 88 methods pass locally on Windows with Python 3.12 and Z3 available. This unit run is separate from the retained POSIX campaign and its timing records.
+The supplied full result contains 33,792 dependency graphs and 2,129,920 candidate event sets; 3,072 graphs are safe and 30,720 unsafe graphs have oracle-checked minimum witnesses. The regression set contains 256 variants (75 safe, 181 unsafe). Fallback tests cover 255 formulas and 2,040 assignments plus 92 fixed-candidate formulas. Scaling has 45 base inputs and 180 policy report rows, with at most 5,599 events. All 720 recovery images pass selected-root, prefix, and specification-byte comparisons and account for 5,382 unreachable occupied-slot observations. The campaign executes 65 evaluation SMT queries plus two pilot queries, with zero unknowns, and all 103 unit methods pass with no skips. The POSIX fixture has eleven agreeing selector projections, zero ordered failures, and two expected unsafe failures.
 
 `check_scientific_invariants.py` checks exact JSON paths and cross-checks primary row counts, decisions, minimum-witness flags, certificate acceptance and byte arithmetic. It does not accept a matching number found elsewhere in a JSON tree. Assertions are ordinary executable checks, not proof-assistant verification.
 
@@ -77,7 +74,7 @@ regenerates 144 physical policy traces and checks 720 recovered images against
 the selected root's specification bytes, multiplicities, repeated recovery, and
 quiescent reclamation. The specification-byte comparison is additional to the
 historical timed recovery path. No SMT query or POSIX fixture runs in this check;
-the retained primary result files and host measurements remain unchanged.
+these supplementary observations are separate from the Ubuntu primary campaign.
 
 The test count must agree between the primary runner output and its summary,
 with the retained 75-method suite as a lower bound. New regressions need not
@@ -108,9 +105,8 @@ No concurrent publication/cleaning, torn writes, distributed faults, generation 
 `src/`: model, analyzer, separate consumer, recovery, oracle, solver, engine and POSIX illustration. `scripts/`: bounded experiments and checks. `tests/`: regressions. `inputs/`: exact public bytes and deterministic configurations/cases. `results/`: primary outputs and derived summaries. `docs/`: model/format/claim documentation. `claim_evidence_ledger.csv`: scientific claim-to-evidence map. `external_resources.csv`, `PROVENANCE.md`, and `licenses/`: source attribution.
 
 Small-domain recovery compares bytes with the offline oracle. The 720-image
-campaign checks recovery success, multiplicity, repeated recovery and
-reclamation; it does not separately compare every returned namespace with
-the oracle's expected bytes.
+campaign also compares every selected-root namespace with its specification,
+alongside multiplicity, repeated recovery, and reclamation checks.
 
 ## Full-history recovery and publication-valid fallback
 
@@ -135,8 +131,8 @@ cut event identifiers, selected prefix, and maximum event. `reproduce.py` also
 compares the selected root, prefix and recovered bytes with the specification.
 The prior 16-cut sampler exhausted its budget at the empty cut and first fifteen
 roots, reaching prefix 60 at batch four or 15 at batch one in a 512-operation
-history. That bias limits the retained 720-image campaign, whose full-image
-controls did still reach the end. Retained timing/occupancy records are unchanged.
+history. The supplied 720-image campaign uses stratified cuts and records their
+current recovery timings and occupancy totals.
 
 The separate local check examines 512-operation histories for all three workload
 families, five seeds and three physical policies. It stores real local image-file
@@ -153,7 +149,7 @@ produce 765 verified local image-file roundtrips. All four prefix quarters are
 represented, and each proper-cut set reaches prefix 512. The directed late fault
 is missed by old cuts and detected in four stratified cuts. Ten focused unit
 methods pass, with no skips. `summary.json`, primary JSONL rows and
-`unit-tests.json` retain these observations separately from historical campaigns.
+`unit-tests.json` retain these observations separately from the seven-stage primary campaign.
 
 ## Directed contract checks
 

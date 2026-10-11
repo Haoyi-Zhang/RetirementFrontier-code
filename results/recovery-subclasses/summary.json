@@ -16,7 +16,7 @@
     "stratified_late_fault_detections": 4,
     "stratified_max_prefix": 512
   },
-  "platform": "Windows-11-10.0.28000-SP0",
+  "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
   "publication_fallback": {
     "acknowledgement_checks": 19200,
     "disagreements": 0,
@@ -25,7 +25,7 @@
     "publication_valid_graphs": 6528,
     "unsafe_checks": 9984
   },
-  "python": "3.12.14",
+  "python": "3.12.15",
   "schema": 1,
   "selector_projection": {
     "abstract_observations": 11,
@@ -33,5 +33,5 @@
     "posix_syscalls_executed": false,
     "unsafe_failures": 2
   },
-  "wall_seconds": 358.53130030003376
+  "wall_seconds": 280.533388931
 }

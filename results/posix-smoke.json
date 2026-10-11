@@ -2,95 +2,184 @@
   "ordered_failures": 0,
   "rows": [
     {
+      "abstract_cut": [
+        0,
+        1,
+        2
+      ],
       "child_returncode": null,
       "crash_after_boundary": 0,
       "observation": "initial-state",
       "protocol": "unsafe",
       "recoverable": true,
-      "recovered": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      "recovered": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "selector_bridge_agrees": true
     },
     {
+      "abstract_cut": [
+        0,
+        1,
+        2,
+        3
+      ],
       "child_returncode": 86,
       "crash_after_boundary": 1,
       "observation": "injected-termination",
       "protocol": "unsafe",
       "recoverable": false,
-      "recovered": "stale-generation"
+      "recovered": "stale-generation",
+      "selector_bridge_agrees": true
     },
     {
+      "abstract_cut": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
       "child_returncode": 86,
       "crash_after_boundary": 2,
       "observation": "injected-termination",
       "protocol": "unsafe",
       "recoverable": false,
-      "recovered": "stale-generation"
+      "recovered": "stale-generation",
+      "selector_bridge_agrees": true
     },
     {
+      "abstract_cut": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
       "child_returncode": 86,
       "crash_after_boundary": 3,
       "observation": "injected-termination",
       "protocol": "unsafe",
       "recoverable": true,
-      "recovered": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
+      "recovered": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+      "selector_bridge_agrees": true
     },
     {
+      "abstract_cut": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
       "child_returncode": 0,
       "crash_after_boundary": 4,
       "observation": "normal-completion",
       "protocol": "unsafe",
       "recoverable": true,
-      "recovered": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
+      "recovered": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+      "selector_bridge_agrees": true
     },
     {
+      "abstract_cut": [
+        0,
+        1,
+        2
+      ],
       "child_returncode": null,
       "crash_after_boundary": 0,
       "observation": "initial-state",
       "protocol": "ordered",
       "recoverable": true,
-      "recovered": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      "recovered": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "selector_bridge_agrees": true
     },
     {
+      "abstract_cut": [
+        0,
+        1,
+        2,
+        3
+      ],
       "child_returncode": 86,
       "crash_after_boundary": 1,
       "observation": "injected-termination",
       "protocol": "ordered",
       "recoverable": true,
-      "recovered": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      "recovered": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "selector_bridge_agrees": true
     },
     {
+      "abstract_cut": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
       "child_returncode": 86,
       "crash_after_boundary": 2,
       "observation": "injected-termination",
       "protocol": "ordered",
       "recoverable": true,
-      "recovered": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      "recovered": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "selector_bridge_agrees": true
     },
     {
+      "abstract_cut": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
       "child_returncode": 86,
       "crash_after_boundary": 3,
       "observation": "injected-termination",
       "protocol": "ordered",
       "recoverable": true,
-      "recovered": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
+      "recovered": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+      "selector_bridge_agrees": true
     },
     {
+      "abstract_cut": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
       "child_returncode": 86,
       "crash_after_boundary": 4,
       "observation": "injected-termination",
       "protocol": "ordered",
       "recoverable": true,
-      "recovered": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
+      "recovered": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+      "selector_bridge_agrees": true
     },
     {
+      "abstract_cut": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
       "child_returncode": 0,
       "crash_after_boundary": 5,
       "observation": "normal-completion",
       "protocol": "ordered",
       "recoverable": true,
-      "recovered": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
+      "recovered": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+      "selector_bridge_agrees": true
     }
   ],
   "schema": 1,
-  "scope": "process termination after complete atomic-file replacement helpers; explicit CURRENT selector, not strict greatest-root refinement or power-loss testing",
+  "scope": "completed-helper process prefixes; prepared roots project to manifests and CURRENT updates to retained logical ROOTs; no in-helper or power-loss refinement",
   "unsafe_failures": 2
 }
