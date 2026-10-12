@@ -46,9 +46,8 @@ files, power loss, selector rollback, concurrent writers, and mutating recovery
 are outside the bridge. Neither a fsync mock nor abstract recovery is evidence of
 POSIX crash persistence.
 
-`scripts/run_posix_smoke.py` now compares actual child-process results with this
-projection at every boundary when executed on a POSIX host. The retained
-`results/posix-smoke.json` predates those comparison fields and is not overwritten
-by Windows validation. `results/recovery-subclasses/selector-projection.json`
-contains abstract outcomes only and explicitly records that POSIX syscalls were
-not executed. It cannot substitute for rerunning the actual process fixture.
+`scripts/run_posix_smoke.py` compares child-process recovery with this projection
+at every named boundary on a POSIX host. The retained Ubuntu fixture in
+`results/posix-smoke.json` has eleven agreeing selector-bridge checks.
+Windows validation in `results/recovery-subclasses/selector-projection.json`
+checks the abstract outcomes without executing POSIX syscalls.

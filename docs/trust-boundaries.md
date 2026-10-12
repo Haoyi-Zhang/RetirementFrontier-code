@@ -30,14 +30,12 @@ The public-byte set is narrow and intentionally unchanged across versions. Repor
 separate online medium or medium-backed read API. The harness admits the emitted
 trace and independently materializes chosen cuts, then recovery reads the image.
 The small-domain oracle compares recovered bytes with ghost expectations.
-The retained 720-image campaign checks recovery success and repeatability,
-not a fresh oracle comparison of every recovered namespace. Its old proper-cut
-sampler took only the first fifteen roots after the empty cut. At 512 operations
-this reaches prefix 60 with batch-four commits, or prefix 15 with per-operation
-commits; full-image controls still reach the end. New full-history sampling uses
-root and event rank strata, records exact cut IDs, and checks specification bytes.
-Separate results in `results/recovery-subclasses/` do not overwrite retained
-recovery timings or claim real crash persistence.
+The 720-image campaign compares selected-root identity, prefix, and object
+bytes with the specification after the timed recovery calls. It also checks
+repeatability, multiplicity, and quiescent reclamation, and its root/event rank
+strata record exact cut IDs. Separate local image-file checks in
+`results/recovery-subclasses/` complement these observations. Both examine
+serialization and byte recovery in the atomic-record model.
 Whole-trace binding admission checks later allocations as well as earlier ones.
 Neither offline reconstruction nor the separate POSIX illustration establishes
 an online implementation that is absent from this artifact.
