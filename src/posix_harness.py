@@ -2,7 +2,9 @@
 
 This fixture uses CURRENT rather than greatest-durable-root selection. A hook
 runs only after a complete temporary-write/fsync/rename/directory-fsync helper.
-It is neither a refinement of the trace theorem nor a power-failure experiment.
+selector_bridge projects these fixed completed-helper prefixes after initialization
+to strict latest-publication recovery. This is not an arbitrary POSIX refinement
+or a power-failure experiment.
 """
 from __future__ import annotations
 import hashlib, json, os, pathlib, shutil, sys

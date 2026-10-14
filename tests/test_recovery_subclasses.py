@@ -63,6 +63,16 @@ def late_cut_regression():
 
 
 class RecoverySubclassTests(unittest.TestCase):
+    def test_boundary_projection_rejects_unknown_protocol(self):
+        # Even the initial-state control needs a named protocol. Otherwise an
+        # unknown protocol used to yield a legal-looking partial setup cut.
+        for protocol in ("not-a-protocol", "", "ORDERED"):
+            with self.subTest(protocol=protocol):
+                with self.assertRaises(ValueError):
+                    boundary_trace(protocol)
+                with self.assertRaisesRegex(ValueError, "protocol"):
+                    boundary_cut(protocol, 0)
+
     def test_boundary_projection_exact_named_prefixes(self):
         for protocol in ("ordered", "unsafe"):
             model = admit_trace(boundary_trace(protocol))

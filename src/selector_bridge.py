@@ -51,7 +51,9 @@ def boundary_trace(protocol: str) -> dict:
 
 
 def boundary_cut(protocol: str, after: int) -> list[int]:
-    count = 4 if protocol == "ordered" else 3 if protocol == "unsafe" else -1
+    if protocol not in ("ordered", "unsafe"):
+        raise ValueError("invalid protocol")
+    count = 4 if protocol == "ordered" else 3
     if type(after) is not int or not 0 <= after <= count + 1:
         raise ValueError("invalid helper boundary")
     return list(range(3 + min(after, count)))
