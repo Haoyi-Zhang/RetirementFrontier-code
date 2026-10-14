@@ -10,6 +10,23 @@ The mathematical results characterize this model, not arbitrary programs or hard
 
 ## Requirements
 
+The strict `recover_latest` path selects the numerically greatest retained root
+file independently of `CURRENT`. Optional helper hooks expose nine successful
+I/O boundaries. `tests/test_posix_event_cuts.py` compares 56 initialization and
+130 update images against the existing model under two explicitly supplied
+rename-retention rules. It executes file writes, flushes and replacements while
+mocking synchronization and directory calls. All 186 comparisons agree;
+ordered updates have no failures and unsafe reuse has 18 stale-generation
+failures. The original eleven completed-selector observations remain unchanged.
+The test-local retention rules are assumptions, not measured power-loss behavior.
+
+```sh
+python -B -m unittest discover -s tests -p test_posix_event_cuts.py -v
+python -B -O -m unittest discover -s tests -p test_posix_event_cuts.py -v
+```
+
+## Execution requirements
+
 Core experiments use Python 3.10 or later and the standard library, on a POSIX host with `resource` and process support. The recorded reproduction used Ubuntu 24.04 and Python 3.12. Complete SMT comparisons additionally require a usable local Z3 C shared library, discoverable by `ctypes.util.find_library`, or a local `z3-solver` installation. The campaign uses included inputs; TeX is unnecessary for this standalone repository.
 
 ## Reproduce the evidence
