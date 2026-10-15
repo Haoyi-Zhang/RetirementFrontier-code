@@ -187,11 +187,13 @@ write bytes divided by logical input bytes. Certified and unchecked batch-four
 traces share the same storage results.
 
 ```sh
+python -m pip install -r requirements-figures.txt
 python plots/draw_write_ratios.py --font-root /path/to/texmf-dist/fonts --output-dir figures
 python -B -m unittest discover -s tests -p test_plot_sources.py -v
 ```
 
-Rendering requires ReportLab and the external Linux Libertine Type 1 font from
+Rendering uses the optional ReportLab dependency declared separately from the
+standard-library core and the external Linux Libertine Type 1 font from
 a TeX distribution. The output is an embedded-font vector PDF; rendering does
 not execute experiments or replace the retained observations. Choose an empty
 output directory. `--input` and `--column-width-pt` can select another validated
